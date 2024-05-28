@@ -9,10 +9,12 @@ public class ShellyEM3Entity extends ShellyEntity{
 
 
     public ShellyEM3Entity(String clientID) {
+        relayList = new ArrayList<EM3RelayEntity>();
 
         initEmeter(clientID);
         initRelay();
         setModel("shellyem3");
+
     }
 
     private void initEmeter(String clientID){
