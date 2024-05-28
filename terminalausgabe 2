@@ -1,0 +1,464 @@
+ol-2-thread-12] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+getPayload() PooledDuplicatedByteBuf(ridx: 646, widx: 815, cap: 1024, unwrapped: PooledUnsafeDirectByteBuf(ridx: 815, widx: 815, cap: 1024)) 
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+2023-05-31 14:42:45.697  INFO 25808 --- [ool-2-thread-13] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":3, "source":"init", "output":true, "apower":0.0, "voltage":230.6, "current":0.000, "pf":-0.00, "aenergy":{"total":42756.211},"temperature":{"tC":49.9, "tF":121.9}}
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+2023-05-31 14:42:45.698  INFO 25808 --- [ool-2-thread-13] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:42:45.698  INFO 25808 --- [ool-2-thread-13] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+Exception in thread "pool-2-thread-12" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+Exception in thread "pool-2-thread-13" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:42:45.729  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <18>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 200, cap: 8192, unwrapped: PooledUnsafeDirectByteBuf(ridx: 400, widx: 800, cap: 8192))  
+2023-05-31 14:42:45.729  INFO 25808 --- [ool-2-thread-14] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":3.53,"switch:0":{"id":0,"current":0.054}}}
+2023-05-31 14:42:45.729  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <19>
+2023-05-31 14:42:45.729  INFO 25808 --- [ool-2-thread-14] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:42:45.729  INFO 25808 --- [ool-2-thread-14] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:42:45.729  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <20>
+2023-05-31 14:42:45.729  INFO 25808 --- [ool-2-thread-14] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:0":{"current":0.054,"id":0},"ts":3.53}}
+2023-05-31 14:42:45.729  INFO 25808 --- [ool-2-thread-14] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+Exception in thread "pool-2-thread-14" 2023-05-31 14:42:45.729  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <21>
+org.json.JSONException: JSONObject["msg"] not found.
+getPayload() PooledDuplicatedByteBuf(ridx: 243, widx: 400, cap: 8192, unwrapped: PooledUnsafeDirectByteBuf(ridx: 800, widx: 800, cap: 8192)) 
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+2023-05-31 14:42:45.733  INFO 25808 --- [ool-2-thread-15] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":3.53,"switch:1":{"id":1,"voltage":231.8}}}
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+2023-05-31 14:42:45.733  INFO 25808 --- [ool-2-thread-15] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+2023-05-31 14:42:45.733  INFO 25808 --- [ool-2-thread-15] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+2023-05-31 14:42:45.733  INFO 25808 --- [ool-2-thread-15] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:1":{"id":1,"voltage":231.8},"ts":3.53}}
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+2023-05-31 14:42:45.733  INFO 25808 --- [ool-2-thread-15] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+Exception in thread "pool-2-thread-15" org.json.JSONException: JSONObject["msg"] not found.
+getPayload() PooledDuplicatedByteBuf(ridx: 443, widx: 600, cap: 8192, unwrapped: PooledUnsafeDirectByteBuf(ridx: 800, widx: 800, cap: 8192)) 
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+2023-05-31 14:42:45.736  INFO 25808 --- [ool-2-thread-16] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":3.53,"switch:2":{"id":2,"voltage":230.6}}}
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+2023-05-31 14:42:45.736  INFO 25808 --- [ool-2-thread-16] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+2023-05-31 14:42:45.736  INFO 25808 --- [ool-2-thread-16] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+2023-05-31 14:42:45.736  INFO 25808 --- [ool-2-thread-16] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:2":{"id":2,"voltage":230.6},"ts":3.53}}
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+2023-05-31 14:42:45.736  INFO 25808 --- [ool-2-thread-16] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+getPayload() PooledDuplicatedByteBuf(ridx: 643, widx: 800, cap: 8192, unwrapped: PooledUnsafeDirectByteBuf(ridx: 800, widx: 800, cap: 8192)) 
+Exception in thread "pool-2-thread-16" 2023-05-31 14:42:45.740  INFO 25808 --- [ool-2-thread-17] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":3.53,"switch:3":{"id":3,"voltage":230.6}}}
+org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+2023-05-31 14:42:45.740  INFO 25808 --- [ool-2-thread-17] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+2023-05-31 14:42:45.740  INFO 25808 --- [ool-2-thread-17] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:42:45.740  INFO 25808 --- [ool-2-thread-17] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:3":{"id":3,"voltage":230.6},"ts":3.53}}
+2023-05-31 14:42:45.740  INFO 25808 --- [ool-2-thread-17] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+Exception in thread "pool-2-thread-17" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:42:46.181  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <22>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 191, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 253, widx: 253, cap: 4096))  
+2023-05-31 14:42:46.181  INFO 25808 --- [ool-2-thread-18] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":4.02,"cloud":{"connected":true}}}
+2023-05-31 14:42:46.181  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <23>
+2023-05-31 14:42:46.181  INFO 25808 --- [ool-2-thread-18] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:42:46.181  INFO 25808 --- [ool-2-thread-18] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:42:46.181  INFO 25808 --- [ool-2-thread-18] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"cloud":{"connected":true},"ts":4.02}}
+2023-05-31 14:42:46.189  INFO 25808 --- [ool-2-thread-18] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+Exception in thread "pool-2-thread-18" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+getPayload() PooledDuplicatedByteBuf(ridx: 235, widx: 253, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 253, widx: 253, cap: 4096)) 
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+2023-05-31 14:42:46.189  INFO 25808 --- [ool-2-thread-19] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"connected":true}
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+2023-05-31 14:42:46.189  INFO 25808 --- [ool-2-thread-19] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+2023-05-31 14:42:46.189  INFO 25808 --- [ool-2-thread-19] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+Exception in thread "pool-2-thread-19" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:42:58.409  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <24>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 228, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 541, widx: 541, cap: 4096))  
+2023-05-31 14:42:58.409  INFO 25808 --- [ool-2-thread-20] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":16.48,"sys":{"available_updates":{"beta":{"version":"1.0.0-beta1"}}}}}
+2023-05-31 14:42:58.409  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <25>
+2023-05-31 14:42:58.409  INFO 25808 --- [ool-2-thread-20] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:42:58.409  INFO 25808 --- [ool-2-thread-20] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:42:58.409  INFO 25808 --- [ool-2-thread-20] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"sys":{"available_updates":{"beta":{"version":"1.0.0-beta1"}}},"ts":16.48}}
+2023-05-31 14:42:58.409  INFO 25808 --- [ool-2-thread-20] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+Exception in thread "pool-2-thread-20" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+getPayload() PooledDuplicatedByteBuf(ridx: 271, widx: 541, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 541, widx: 541, cap: 4096)) 
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+2023-05-31 14:42:58.409  INFO 25808 --- [ool-2-thread-21] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"mac":"C8C9A3EF0674","restart_required":false,"time":null,"unixtime":null,"uptime":16,"ram_size":233068,"ram_free":141184,"fs_size":524288,"fs_free":163840,"cfg_rev":27,"kvs_rev":0,"schedule_rev":0,"webhook_rev":0,"available_updates":{"beta":{"version":"1.0.0-beta1"}}}
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+2023-05-31 14:42:58.409  INFO 25808 --- [ool-2-thread-21] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+2023-05-31 14:42:58.409  INFO 25808 --- [ool-2-thread-21] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+Exception in thread "pool-2-thread-21" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:44:08.821  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <26>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 201, cap: 2048, unwrapped: PooledUnsafeDirectByteBuf(ridx: 421, widx: 861, cap: 2048))  
+2023-05-31 14:44:08.821  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <27>
+2023-05-31 14:44:08.821  INFO 25808 --- [ool-2-thread-22] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":86.57,"switch:0":{"id":0,"apower":2238.9}}}
+2023-05-31 14:44:08.821  INFO 25808 --- [ool-2-thread-22] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:44:08.821  INFO 25808 --- [ool-2-thread-22] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:44:08.821  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <28>
+2023-05-31 14:44:08.821  INFO 25808 --- [ool-2-thread-22] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:0":{"apower":2238.9,"id":0},"ts":86.57}}
+2023-05-31 14:44:08.821  INFO 25808 --- [ool-2-thread-22] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+2023-05-31 14:44:08.821  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <29>
+Exception in thread "pool-2-thread-22" org.json.JSONException: JSONObject["msg"] not found.
+getPayload() PooledDuplicatedByteBuf(ridx: 249, widx: 421, cap: 2048, unwrapped: PooledUnsafeDirectByteBuf(ridx: 861, widx: 861, cap: 2048)) 
+        at org.json.JSONObject.get(JSONObject.java:520)
+2023-05-31 14:44:08.821  INFO 25808 --- [ool-2-thread-23] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":0, "source":"init", "output":true, "apower":2238.9, "voltage":229.2, "current":9.740, "pf":0.94, "aenergy":{"total":118013.680},"temperature":{"tC":50.0, "tF":122.0}}
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+2023-05-31 14:44:08.821  INFO 25808 --- [ool-2-thread-23] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+2023-05-31 14:44:08.829  INFO 25808 --- [ool-2-thread-23] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+getPayload() PooledDuplicatedByteBuf(ridx: 469, widx: 641, cap: 2048, unwrapped: PooledUnsafeDirectByteBuf(ridx: 861, widx: 861, cap: 2048)) 
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:44:08.830  INFO 25808 --- [ool-2-thread-24] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":0, "source":"init", "output":true, "apower":2238.9, "voltage":229.2, "current":9.740, "pf":0.94, "aenergy":{"total":118013.680},"temperature":{"tC":50.0, "tF":122.0}}
+Exception in thread "pool-2-thread-23" org.json.JSONException: JSONObject["msg"] not found.
+2023-05-31 14:44:08.831  INFO 25808 --- [ool-2-thread-24] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at org.json.JSONObject.get(JSONObject.java:520)
+2023-05-31 14:44:08.831  INFO 25808 --- [ool-2-thread-24] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+getPayload() PooledDuplicatedByteBuf(ridx: 689, widx: 861, cap: 2048, unwrapped: PooledUnsafeDirectByteBuf(ridx: 861, widx: 861, cap: 2048)) 
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+2023-05-31 14:44:08.833  INFO 25808 --- [ool-2-thread-25] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":0, "source":"init", "output":true, "apower":2238.9, "voltage":229.2, "current":9.740, "pf":0.94, "aenergy":{"total":118013.680},"temperature":{"tC":50.0, "tF":122.0}}
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+Exception in thread "pool-2-thread-24" org.json.JSONException: JSONObject["msg"] not found.
+2023-05-31 14:44:08.834  INFO 25808 --- [ool-2-thread-25] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+2023-05-31 14:44:08.835  INFO 25808 --- [ool-2-thread-25] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+Exception in thread "pool-2-thread-25" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:44:08.873  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <30>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 201, cap: 1024, unwrapped: PooledUnsafeDirectByteBuf(ridx: 396, widx: 396, cap: 1024))  
+2023-05-31 14:44:08.873  INFO 25808 --- [ool-2-thread-26] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":86.57,"switch:0":{"id":0,"current":9.740}}}
+2023-05-31 14:44:08.873  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <31>
+2023-05-31 14:44:08.873  INFO 25808 --- [ool-2-thread-26] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:44:08.873  INFO 25808 --- [ool-2-thread-26] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:44:08.873  INFO 25808 --- [ool-2-thread-26] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:0":{"current":9.74,"id":0},"ts":86.57}}
+2023-05-31 14:44:08.873  INFO 25808 --- [ool-2-thread-26] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+Exception in thread "pool-2-thread-26" org.json.JSONException: JSONObject["msg"] not found.
+getPayload() PooledDuplicatedByteBuf(ridx: 244, widx: 396, cap: 1024, unwrapped: PooledUnsafeDirectByteBuf(ridx: 396, widx: 396, cap: 1024)) 
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+2023-05-31 14:44:08.873  INFO 25808 --- [ool-2-thread-27] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":86.57,"switch:0":{"id":0,"pf":0.94}}}
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+2023-05-31 14:44:08.873  INFO 25808 --- [ool-2-thread-27] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+2023-05-31 14:44:08.873  INFO 25808 --- [ool-2-thread-27] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+2023-05-31 14:44:08.881  INFO 25808 --- [ool-2-thread-27] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:0":{"pf":0.94,"id":0},"ts":86.57}}
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+2023-05-31 14:44:08.881  INFO 25808 --- [ool-2-thread-27] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+ocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:45:15.528  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <32>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 201, cap: 512, unwrapped: PooledUnsafeDirectByteBuf(ridx: 420, widx: 512, cap: 512))
+2023-05-31 14:45:15.544  INFO 25808 --- [ool-2-thread-28] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":153.60,"switch:0":{"id":0,"apower":393.2}}}
+2023-05-31 14:45:15.544  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <33>
+2023-05-31 14:45:15.545  INFO 25808 --- [ool-2-thread-28] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:45:15.545  INFO 25808 --- [ool-2-thread-28] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:45:15.545  INFO 25808 --- [ool-2-thread-28] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:0":{"apower":393.2,"id":0},"ts":153.6}}
+2023-05-31 14:45:15.545  INFO 25808 --- [ool-2-thread-28] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+2023-05-31 14:45:15.545  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <34>
+Exception in thread "pool-2-thread-28" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+getPayload() PooledDuplicatedByteBuf(ridx: 249, widx: 420, cap: 512, unwrapped: PooledUnsafeDirectByteBuf(ridx: 468, widx: 512, cap: 512))
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+2023-05-31 14:45:15.545  INFO 25808 --- [ool-2-thread-29] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":0, "source":"init", "output":true, "apower":393.2, "voltage":232.1, "current":2.573, "pf":1.00, "aenergy":{"total":118054.562},"temperature":{"tC":51.4, "tF":124.5}}
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+2023-05-31 14:45:15.545  INFO 25808 --- [ool-2-thread-29] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+2023-05-31 14:45:15.545  INFO 25808 --- [ool-2-thread-29] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at java.base/java.lang.Thread.run(Thread.java:833)
+Exception in thread "pool-2-thread-29" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+getPayload() PooledDuplicatedByteBuf(ridx: 0, widx: 171, cap: 256, unwrapped: PooledUnsafeDirectByteBuf(ridx: 171, widx: 171, cap: 256))     
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+2023-05-31 14:45:15.548  INFO 25808 --- [ool-2-thread-30] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":0, "source":"init", "output":true, "apower":393.2, "voltage":232.1, "current":2.573, "pf":1.00, "aenergy":{"total":118054.562},"temperature":{"tC":51.4, "tF":124.5}}
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+2023-05-31 14:45:15.548  INFO 25808 --- [ool-2-thread-30] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:45:15.548  INFO 25808 --- [ool-2-thread-30] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+Exception in thread "pool-2-thread-30" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:45:15.593  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <35>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 202, cap: 8192, unwrapped: PooledUnsafeDirectByteBuf(ridx: 202, widx: 202, cap: 8192))  
+2023-05-31 14:45:15.593  INFO 25808 --- [ool-2-thread-31] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":153.60,"switch:0":{"id":0,"current":2.573}}}
+2023-05-31 14:45:15.593  INFO 25808 --- [ool-2-thread-31] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:45:15.593  INFO 25808 --- [ool-2-thread-31] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:45:15.593  INFO 25808 --- [ool-2-thread-31] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:0":{"current":2.573,"id":0},"ts":153.6}}
+2023-05-31 14:45:15.593  INFO 25808 --- [ool-2-thread-31] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+Exception in thread "pool-2-thread-31" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:45:16.711  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <36>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 199, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 416, widx: 850, cap: 4096))  
+2023-05-31 14:45:16.711  INFO 25808 --- [ool-2-thread-32] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":154.60,"switch:0":{"id":0,"apower":0.0}}}
+2023-05-31 14:45:16.711  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <37>
+2023-05-31 14:45:16.711  INFO 25808 --- [ool-2-thread-32] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:45:16.711  INFO 25808 --- [ool-2-thread-32] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:45:16.711  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <38>
+2023-05-31 14:45:16.711  INFO 25808 --- [ool-2-thread-32] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:0":{"apower":0,"id":0},"ts":154.6}}
+2023-05-31 14:45:16.711  INFO 25808 --- [ool-2-thread-32] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+2023-05-31 14:45:16.711  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <39>
+Exception in thread "pool-2-thread-32" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+getPayload() PooledDuplicatedByteBuf(ridx: 247, widx: 416, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 850, widx: 850, cap: 4096)) 
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setValue(Shelly4ProMsgHandler.java:89)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:39)
+2023-05-31 14:45:16.711  INFO 25808 --- [ool-2-thread-33] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":0, "source":"init", "output":true, "apower":0.0, "voltage":232.2, "current":0.054, "pf":0.00, "aenergy":{"total":118054.562},"temperature":{"tC":51.2, "tF":124.2}}
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+2023-05-31 14:45:16.711  INFO 25808 --- [ool-2-thread-33] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+2023-05-31 14:45:16.711  INFO 25808 --- [ool-2-thread-33] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+getPayload() PooledDuplicatedByteBuf(ridx: 464, widx: 633, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 850, widx: 850, cap: 4096)) 
+Exception in thread "pool-2-thread-33" org.json.JSONException: JSONObject["msg"] not found.
+2023-05-31 14:45:16.720  INFO 25808 --- [ool-2-thread-34] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":0, "source":"init", "output":true, "apower":0.0, "voltage":232.2, "current":0.054, "pf":0.00, "aenergy":{"total":118054.562},"temperature":{"tC":51.2, "tF":124.2}}
+        at org.json.JSONObject.get(JSONObject.java:520)
+2023-05-31 14:45:16.720  INFO 25808 --- [ool-2-thread-34] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+2023-05-31 14:45:16.720  INFO 25808 --- [ool-2-thread-34] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+getPayload() PooledDuplicatedByteBuf(ridx: 681, widx: 850, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 850, widx: 850, cap: 4096)) 
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:45:16.722  INFO 25808 --- [ool-2-thread-35] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"id":0, "source":"init", "output":true, "apower":0.0, "voltage":232.2, "current":0.054, "pf":0.00, "aenergy":{"total":118054.562},"temperature":{"tC":51.2, "tF":124.2}}
+Exception in thread "pool-2-thread-34" org.json.JSONException: JSONObject["msg"] not found.
+2023-05-31 14:45:16.724  INFO 25808 --- [ool-2-thread-35] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+2023-05-31 14:45:16.724  INFO 25808 --- [ool-2-thread-35] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+Exception in thread "pool-2-thread-35" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObject(JSONObject.java:732)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.setShellyStatusValues(Shelly4ProMsgHandler.java:46)
+        at dot.RelaiMqttServer.handler.Shelly4ProMsgHandler.handelMsg(Shelly4ProMsgHandler.java:32)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.sortMsgToShelly(MqttBrokerIncommingMsgHandler.java:91)
+        at dot.RelaiMqttServer.handler.MqttBrokerIncommingMsgHandler.handelMsg(MqttBrokerIncommingMsgHandler.java:101)
+        at dot.RelaiMqttServer.networkProtocol.mqtt.broker.IncommingPublisherListener.onPublish(IncommingPublisherListener.java:38)
+        at io.moquette.interception.BrokerInterceptor.lambda$notifyTopicPublished$3(BrokerInterceptor.java:134)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-31 14:45:16.767  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <40>
+getPayload() PooledDuplicatedByteBuf(ridx: 43, widx: 202, cap: 4096, unwrapped: PooledUnsafeDirectByteBuf(ridx: 398, widx: 398, cap: 4096))  
+2023-05-31 14:45:16.767  INFO 25808 --- [ool-2-thread-36] d.R.h.MqttBrokerIncommingMsgHandler      : MSG
+{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":154.60,"switch:0":{"id":0,"current":0.054}}}
+2023-05-31 14:45:16.767  INFO 25808 --- [ntLoopGroup-3-4] i.m.broker.metrics.MQTTMessageLogger     : C<-B PUBACK <shellypro4pm-c8c9a3ef0674> packetID <41>
+2023-05-31 14:45:16.767  INFO 25808 --- [ool-2-thread-36] d.RelaiMqttServer.handler.ShellyHandler  : device key,value: [shellypro4pm-c8c9a3ef0674=dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity@188c2c09]
+2023-05-31 14:45:16.767  INFO 25808 --- [ool-2-thread-36] d.R.h.MqttBrokerIncommingMsgHandler      : id: shellypro4pm
+2023-05-31 14:45:16.767  INFO 25808 --- [ool-2-thread-36] dot.RelaiMqttServer.handler.MsgHandler   : jsonObject {"dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","src":"shellypro4pm-c8c9a3ef0674","params":{"switch:0":{"current":0.054,"id":0},"ts":154.6}}
+2023-05-31 14:45:16.767  INFO 25808 --- [ool-2-thread-36] dot.RelaiMqttServer.handler.MsgHandler   : keySet dst
+Exception in thread "pool-2-thread-36" org.json.JSONException: JSONObject["msg"] not found.
+        at org.json.JSONObject.get(JSONObject.java:520)
+        at org.json.JSONObject.getJSONObj

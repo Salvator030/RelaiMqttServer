@@ -1,0 +1,21 @@
+Index: src/main/java/dot/RelaiMqttServer/shellyDevice/ChanelEntity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/dot/RelaiMqttServer/shellyDevice/ChanelEntity.java b/src/main/java/dot/RelaiMqttServer/shellyDevice/ChanelEntity.java
+--- a/src/main/java/dot/RelaiMqttServer/shellyDevice/ChanelEntity.java	
++++ b/src/main/java/dot/RelaiMqttServer/shellyDevice/ChanelEntity.java	(date 1658750497920)
+@@ -30,7 +30,11 @@
+     @Column
+     private double pf;
+ 
+-    @Enumerated(EnumType.STRING)
++    @OneToMany(cascade = CascadeType.ALL)
++    @JoinTable(name = "energy",
++            joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
++            inverseJoinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "id")})
++    @MapKey(name = "itemName")
+     private Map<EEnergy,Object> energy;
+ 
+     @Enumerated(EnumType.STRING)

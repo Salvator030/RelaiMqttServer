@@ -1,0 +1,66 @@
+topic: /events/rpc
+
+{"msg":{"src":"shellypro4pm-c8c9a3ef0674",
+		"dst":"shellypro4pm-c8c9a3ef0674/events",
+		"method":"NotifyStatus",
+		"params":{
+			"ts":1657722360.56,
+			"switch:2":{
+				"id":2,
+				"apower":22
+			}
+		}
+}}
+
+-------------------------------------------------------------------
+
+topicName : shellypro4pm-c8c9a3ef0674/status/switch:2
+{
+	"msg":{
+		"id":2,
+		"source":"init", 
+		"output":true,
+		"apower":0.0, 
+		"voltage":229.1,
+		"current":0.0,
+		"pf":0.00,
+		"aenergy":{
+			"total":0.00,
+			"by_minute":[0.000,0.000,0.000],
+			"get":1657722419
+		},
+		"temperature":{
+			"tC":54.5, 
+			"tF":130.0
+		}
+	
+	},
+	"date":"13-07-2022 - 15:26:59",
+	"clientID":"shellypro4pm-c8c9a3ef0674",
+	"topicName":"shellypro4pm-c8c9a3ef0674/status/switch:2"
+}
+
+---------------------------------------------------------------------------
+
+GET /status (mqtt anaunce request, answer)
+
+{
+    "relays": [
+        {
+            "ison": false,
+            "has_timer": false,
+            "timer_remaining": 0,
+            "overpower": false,
+            "is_valid": true
+        }
+    ],
+    "meters": [
+        {
+            "power": 0,
+            "is_valid": true,
+            "timestamp": 0,
+            "counters": [1,2,3],
+            "total": 4
+        }
+    ]
+}
