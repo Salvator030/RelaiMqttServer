@@ -14,7 +14,7 @@ public class ShellyChannelConfigControler {
 
     @PostMapping("/setMaxPower")
     public String setMaxPower(@RequestBody String req){
-        log.info(("shelly/setting\n" + req));
+     //   log.info(("shelly/setting\n" + req));
         SchellyChanelConfig.setMaxPower(new JSONObject(req).getFloat("maxPower"));
         return "0";
     }

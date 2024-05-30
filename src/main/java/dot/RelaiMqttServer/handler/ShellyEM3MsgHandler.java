@@ -4,6 +4,9 @@ import dot.RelaiMqttServer.networkProtocol.mqtt.incommingMsg.BrokerMsgEnity;
 import dot.RelaiMqttServer.shellyDevice.EmeterEntity;
 import dot.RelaiMqttServer.shellyDevice.ShellyEM3Entity;
 import dot.RelaiMqttServer.shellyDevice.ShellyEntity;
+import dot.RelaiMqttServer.shellyDevice.WifiEntity;
+import netscape.javascript.JSObject;
+
 import org.json.JSONObject;
 
 public class ShellyEM3MsgHandler implements MsgHandler {
@@ -51,14 +54,37 @@ public class ShellyEM3MsgHandler implements MsgHandler {
 
     }
 
-    private void setShellyAnnounceValue(BrokerMsgEnity brokerMsgEnity, String msgString) {
-        JSONObject container = new JSONObject(msgString);
-        JSONObject msg = new JSONObject(container);
-        ShellyEntity shelly = this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
+    private void setAnnaunce(BrokerMsgEnity brokerMsgEnity, String msgString) {
+       
+        JSONObject msg = new JSONObject(msgString);
+        ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
         shelly.setIp(msg.getString("ip"));
         shelly.setMac(msg.getString("mac"));
         shelly.setFw_ver(msg.getString("fw_ver"));
         shelly.setNew_fw(msg.getBoolean("new_fw"));
+    }
+
+    private void setInfo(BrokerMsgEnity brokerMsgEnity, String msgString){
+        try{
+            JSONObject msg = new JSONObject(msgString);
+            ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
+
+            JSONbject wifi = new JSObject(msg.getJSONObject("wifi_sta"));     
+            shelly.getWifi_sta().setConnected(wifi.getBoolean("connected"));
+            shelly.getWifi_sta().setSsid(wifi.getString("ssid"));
+            shelly.getWifi_sta().setIp(wifi.getString("ip"));
+            shelly.getWifi_sta().setRssi(wifi.getInt("rssi"));
+
+            JSONbject cloud = new JSObject(msg.getJSONObject("cloud"));     
+            shelly.getCloud().setConnected(cloud.getBoolean("connected"));
+            shelly.getCloud().setEnabled(cloud.getBoolean("enabled"));
+
+            JSONArray ja = msg.getJSONArray("emeters");
+            ja.length();
+
+        }
+        catch(Exception exception){        
+        }
     }
 
     private void setShellyInfoValue(BrokerMsgEnity brokerMsgEnity, String msgString) {

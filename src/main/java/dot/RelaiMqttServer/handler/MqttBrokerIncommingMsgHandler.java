@@ -39,7 +39,7 @@ public class MqttBrokerIncommingMsgHandler implements MsgHandler{
 
 
    private BrokerMsgEnity restorLast100msg(BrokerMsgEnity brokerMsgEnity){
-       log.info("MSG\n" + brokerMsgEnity.getMsg());
+    //   log.info("MSG\n" + brokerMsgEnity.getMsg());
        if( msgList.size() == 100){
            msgList.remove(0);
        }
@@ -55,7 +55,7 @@ public class MqttBrokerIncommingMsgHandler implements MsgHandler{
        for ( int i = 0; i < count; i++){
            jsonArray.put(BrokerMsgEntityHelper.getJson(this.msgList.get(i)));
        }
-       log.info ("JSONArray\n" + jsonArray);
+   //    log.info ("JSONArray\n" + jsonArray);
        return jsonArray;
    }
 
@@ -75,7 +75,7 @@ public class MqttBrokerIncommingMsgHandler implements MsgHandler{
 
     public void sortMsgToShelly(BrokerMsgEnity brokerMsgEnity) {
         MsgHandler msgHandler = null;
-        log.info("id: " + brokerMsgEnity.getClientID().split("-")[0]);
+    //    log.info("id: " + brokerMsgEnity.getClientID().split("-")[0]);
        switch (BrokerMsgEntityHelper.getShellyModel(brokerMsgEnity.getClientID().split("-")[0])) {
            case "shellypro4pm" : {
                 msgHandler = new Shelly4ProMsgHandler();

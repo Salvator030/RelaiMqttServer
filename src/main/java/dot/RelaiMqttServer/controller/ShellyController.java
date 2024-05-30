@@ -19,7 +19,7 @@ public class ShellyController {
 
     @GetMapping("/shellys")
     public String getShellys(){
-    log.info("api/shellys" + shellyHandler.sendShellys().toString());
+  //   log.info("api/shellys" + shellyHandler.sendShellys().toString());
     return shellyHandler.sendShellys().toString();
     }
 
