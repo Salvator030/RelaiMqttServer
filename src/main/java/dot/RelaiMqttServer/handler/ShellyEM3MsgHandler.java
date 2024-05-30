@@ -4,9 +4,18 @@ import dot.RelaiMqttServer.networkProtocol.mqtt.incommingMsg.BrokerMsgEnity;
 import dot.RelaiMqttServer.shellyDevice.EmeterEntity;
 import dot.RelaiMqttServer.shellyDevice.ShellyEM3Entity;
 import dot.RelaiMqttServer.shellyDevice.ShellyEntity;
+import dot.RelaiMqttServer.shellyDevice.WifiEntity;
+import netscape.javascript.JSObject;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ShellyEM3MsgHandler implements MsgHandler {
+
+    private static Logger log = LoggerFactory.getLogger(new Exception().fillInStackTrace().getStackTrace()[0].getClassName());
+   
     @Override
     public void handelMsg(BrokerMsgEnity brokerMsgEnity) {
 
@@ -21,6 +30,10 @@ public class ShellyEM3MsgHandler implements MsgHandler {
         } else if (brokerMsgEnity.getTopic().contains("announce")) {
             // setShellyAnnounceValue(brokerMsgEnity,brokerMsgEnity.getMsg());
         }
+        else if (brokerMsgEnity.getTopic().contains("info")) {
+            setInfo(brokerMsgEnity,brokerMsgEnity.getMsg());
+        }
+
 
     }
 
@@ -45,20 +58,64 @@ public class ShellyEM3MsgHandler implements MsgHandler {
         }
     }
 
+    private void setEmeter(EmeterEntity emeter, JSONObject emeterJsonObject){
+        emeter.setTotal(emeterJsonObject.getFloat("total"));
+        emeter.setTotal_returned(emeterJsonObject.getFloat("total_returned"));
+        emeter.setPower(emeterJsonObject.getFloat("power"));
+        emeter.setCurrent(emeterJsonObject.getFloat("current"));
+        emeter.setPf(emeterJsonObject.getFloat("pf"));
+        emeter.setVoltage(emeterJsonObject.getFloat("voltage"));
+      
+    }
+
     private void setRelayValue(BrokerMsgEnity brokerMsgEnity) {
         ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID())).getRelayList()
                 .get(Integer.parseInt(brokerMsgEnity.getTopic().split("/")[3])).setStatus(brokerMsgEnity.getMsg());
 
     }
 
-    private void setShellyAnnounceValue(BrokerMsgEnity brokerMsgEnity, String msgString) {
-        JSONObject container = new JSONObject(msgString);
-        JSONObject msg = new JSONObject(container);
-        ShellyEntity shelly = this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
+    private void setAnnaunce(BrokerMsgEnity brokerMsgEnity, String msgString) {
+       
+        JSONObject msg = new JSONObject(msgString);
+        ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
         shelly.setIp(msg.getString("ip"));
         shelly.setMac(msg.getString("mac"));
         shelly.setFw_ver(msg.getString("fw_ver"));
         shelly.setNew_fw(msg.getBoolean("new_fw"));
+    }
+
+    private void setInfo(BrokerMsgEnity brokerMsgEnity, String msgString){
+        try{
+            JSONObject msg = new JSONObject(msgString);
+            ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
+            log.info(msg.toString());
+            JSONObject wifi = msg.getJSONObject("wifi_sta");     
+            log.info(wifi.toString());
+            shelly.getWifi_sta().setConnected(wifi.getBoolean("connected"));
+            shelly.getWifi_sta().setSsid(wifi.getString("ssid"));
+            shelly.getWifi_sta().setIp(wifi.getString("ip"));
+            shelly.getWifi_sta().setRssi(wifi.getInt("rssi"));
+
+            JSONObject cloud = msg.getJSONObject("cloud");     
+            shelly.getCloud().setConnected(cloud.getBoolean("connected"));
+            shelly.getCloud().setEnabled(cloud.getBoolean("enabled"));
+
+            JSONArray emeters = msg.getJSONArray("emeters");
+            int count =emeters.length();
+            for(int i=0;i<count;i++){
+                EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID()))
+                .getEmeterList().get(i);
+
+                setEmeter(emeter, emeters.getJSONObject(i));
+            }
+
+            shelly.setMac(msg.getString("mac"));
+            shelly.setTotal_power(msg.getFloat("total_power"));
+
+        }
+        catch(Exception exception){    
+            log.error(msgString, exception);
+        }
     }
 
     private void setShellyInfoValue(BrokerMsgEnity brokerMsgEnity, String msgString) {

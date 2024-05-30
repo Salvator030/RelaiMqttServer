@@ -44,7 +44,7 @@ public class ShellyHandler {
     }
 
     private void checkIfKnownShelly(BrokerMsgEnity brokerMsgEnity) {
-        log.info("device key,value: " + shellysAndChanels.getConectetDevices().entrySet());
+     //   log.info("device key,value: " + shellysAndChanels.getConectetDevices().entrySet());
         ShellyEntity shelly = shellysAndChanels.getConectetDevices().putIfAbsent(brokerMsgEnity.getClientID(), initShelly(brokerMsgEnity));
         if (shelly == null) {
          // anpassen an unterschitlichen fwV
@@ -60,7 +60,7 @@ public class ShellyHandler {
         JSONObject jsonObject = new JSONObject();
         for (String string : shellysAndChanels.getConectetDevices().keySet()) {
             ShellyEntity device = shellysAndChanels.getDevice(string);
-            log.info("device " + device.toString());
+        //    log.info("device " + device.toString());
             jsonObject.put(string,new JSONObject(device));
         }
         // for (int i = 0; i < shellysAndChanels.getConectetDevices().keySet().size(); i++) {

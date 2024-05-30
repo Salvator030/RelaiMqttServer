@@ -42,9 +42,9 @@ public class Analyser {
  */
 
     public  int analysPower(){
-        log.info("SchellyChanelConfig.getMaxPower() " + SchellyChanelConfig.getMaxPower());
+    //    log.info("SchellyChanelConfig.getMaxPower() " + SchellyChanelConfig.getMaxPower());
         if (SchellyChanelConfig.getMaxPower() != 0.0f ){
-            log.info("shellysAndChanels.sumOnChanelsPower() " + shellysAndChanels.sumOnChanelsPower());
+    //        log.info("shellysAndChanels.sumOnChanelsPower() " + shellysAndChanels.sumOnChanelsPower());
 
             if ( shellysAndChanels.sumOnChanelsPower() >= SchellyChanelConfig.getMaxPower() && !channelsWiehtOutOutputOff ){
                 channelsWiehtOutOutputOff = true;

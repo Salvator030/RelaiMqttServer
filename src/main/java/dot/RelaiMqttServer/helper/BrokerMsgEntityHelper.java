@@ -16,7 +16,7 @@ public class BrokerMsgEntityHelper {
         json.put("username",msg.getUsername());
         json.put("msg",msg.getMsg());
         json.put("date",msg.dateTooString());
-        log.info("JSON\n" + json);
+    //    log.info("JSON\n" + json);
         return json;
     };
 
