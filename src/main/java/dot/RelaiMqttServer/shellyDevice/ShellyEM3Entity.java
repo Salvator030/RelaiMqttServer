@@ -9,6 +9,7 @@ public class ShellyEM3Entity extends ShellyEntity{
     private ArrayList<EM3RelayEntity> relayList;
     private WifiEntity wifi_sta;
     private CloudEntity cloud;
+    private float total_power;
 
 
     public ShellyEM3Entity(String clientID) {
@@ -46,5 +47,14 @@ public class ShellyEM3Entity extends ShellyEntity{
 
     public ArrayList<EM3RelayEntity> getRelayList() {
         return relayList;
+    }
+
+    
+    public float getTotal_power() {
+        return total_power;
+    }
+
+    public void setTotal_power(float total_power) {
+        this.total_power = total_power;
     }
 }

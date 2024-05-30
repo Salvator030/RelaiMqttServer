@@ -9,8 +9,13 @@ import netscape.javascript.JSObject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ShellyEM3MsgHandler implements MsgHandler {
+
+    private static Logger log = LoggerFactory.getLogger(new Exception().fillInStackTrace().getStackTrace()[0].getClassName());
+   
     @Override
     public void handelMsg(BrokerMsgEnity brokerMsgEnity) {
 
@@ -25,6 +30,10 @@ public class ShellyEM3MsgHandler implements MsgHandler {
         } else if (brokerMsgEnity.getTopic().contains("announce")) {
             // setShellyAnnounceValue(brokerMsgEnity,brokerMsgEnity.getMsg());
         }
+        else if (brokerMsgEnity.getTopic().contains("info")) {
+            setInfo(brokerMsgEnity,brokerMsgEnity.getMsg());
+        }
+
 
     }
 
@@ -79,14 +88,15 @@ public class ShellyEM3MsgHandler implements MsgHandler {
         try{
             JSONObject msg = new JSONObject(msgString);
             ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
-
-            JSONObject wifi = new JSONObject(msg.getJSONObject("wifi_sta"));     
+            log.info(msg.toString());
+            JSONObject wifi = msg.getJSONObject("wifi_sta");     
+            log.info(wifi.toString());
             shelly.getWifi_sta().setConnected(wifi.getBoolean("connected"));
             shelly.getWifi_sta().setSsid(wifi.getString("ssid"));
             shelly.getWifi_sta().setIp(wifi.getString("ip"));
             shelly.getWifi_sta().setRssi(wifi.getInt("rssi"));
 
-            JSONObject cloud = new JSONObject(msg.getJSONObject("cloud"));     
+            JSONObject cloud = msg.getJSONObject("cloud");     
             shelly.getCloud().setConnected(cloud.getBoolean("connected"));
             shelly.getCloud().setEnabled(cloud.getBoolean("enabled"));
 
@@ -99,8 +109,12 @@ public class ShellyEM3MsgHandler implements MsgHandler {
                 setEmeter(emeter, emeters.getJSONObject(i));
             }
 
+            shelly.setMac(msg.getString("mac"));
+            shelly.setTotal_power(msg.getFloat("total_power"));
+
         }
-        catch(Exception exception){        
+        catch(Exception exception){    
+            log.error(msgString, exception);
         }
     }
 
