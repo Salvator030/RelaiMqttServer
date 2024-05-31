@@ -1,3 +1,5 @@
+
+
 <template>
     <div>
         <div>
@@ -5,153 +7,12 @@
                 <table>
                     <tr class="cardHeader">
                         <th colspan="2">model: {{ item.model }}</th>
-
                     </tr>
-                    <div v-if="item.model.includes('shellypro4pm')">
-                        <tr class="whiteTr">
-                            <td>&nbsp;</td>
-                            <td>chanel1</td>
-                            <td>chanel2</td>
-                            <td>chanel3</td>
-                            <td>chanel4</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>output:</td>
-                            <td>{{ item.channels[0].output }}</td>
-                            <td>{{ item.channels[1].output }}</td>
-                            <td>{{ item.channels[2].output }}</td>
-                            <td>{{ item.channels[3].output }}</td>
-                        </tr>
-                        <tr>
-                            <td>current:</td>
-                            <td>{{ item.channels[0].current }}</td>
-                            <td>{{ item.channels[1].current }}</td>
-                            <td>{{ item.channels[2].current }}</td>
-                            <td>{{ item.channels[3].current }}</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>power:</td>
-                            <td>{{ item.channels[0].power }}</td>
-                            <td>{{ item.channels[1].power }}</td>
-                            <td>{{ item.channels[2].power }}</td>
-                            <td>{{ item.channels[3].power }}</td>
-                        </tr>
-                        <tr>
-                            <td>pf:</td>
-                            <td>{{ item.channels[0].pf }}</td>
-                            <td>{{ item.channels[1].pf }}</td>
-                            <td>{{ item.channels[2].pf }}</td>
-                            <td>{{ item.channels[3].pf }}</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>source:</td>
-                            <td>{{ item.channels[0].source }}</td>
-                            <td>{{ item.channels[1].source }}</td>
-                            <td>{{ item.channels[2].source }}</td>
-                            <td>{{ item.channels[3].source }}</td>
-                        </tr>
-                        <tr>
-                            <td>voltage:</td>
-                            <td>{{ item.channels[0].voltage }}</td>
-                            <td>{{ item.channels[1].voltage }}</td>
-                            <td>{{ item.channels[2].voltage }}</td>
-                            <td>{{ item.channels[3].voltage }}</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>energy.total:</td>
-                            <td>{{ item.channels[0].energy_total }}</td>
-                            <td>{{ item.channels[1].energy_total }}</td>
-                            <td>{{ item.channels[2].energy_total }}</td>
-                            <td>{{ item.channels[3].energy_total }}</td>
-                        </tr>
-                        <tr>
-                            <td>energy_minuteTs:</td>
-                            <td>{{ item.channels[0].energy_minuteTs }}</td>
-                            <td>{{ item.channels[1].energy_minuteTs }}</td>
-                            <td>{{ item.channels[2].energy_minuteTs }}</td>
-                            <td>{{ item.channels[3].energy_minuteTs }}</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>energy_byMinute:</td>
-                            <td>{{ item.channels[0].energy_byMinute }}</td>
-                            <td>{{ item.channels[1].energy_byMinute }}</td>
-                            <td>{{ item.channels[2].energy_byMinute }}</td>
-                            <td>{{ item.channels[3].energy_byMinute }}</td>
-                        </tr>
-                        <tr>
-                            <td>temp.°C:</td>
-                            <td>{{ item.channels[0].temp_c }}</td>
-                            <td>{{ item.channels[1].temp_c }}</td>
-                            <td>{{ item.channels[2].temp_c }}</td>
-                            <td>{{ item.channels[3].temp_c }}</td>
-                        </tr>
+                    <div class="conntainer" v-if="item.model.includes('shellypro4pm')">
+                        <Pro4pm :shelly="item" />
                     </div>
-
                     <div v-if="item.model.includes('shellyem3')">
-                        <tr class="whiteTr">
-                            <td>&nbsp;</td>
-                            <td>emeter1</td>
-                            <td>emeter2</td>
-                            <td>emeter3</td>
-                            <td>emeter4</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>current:</td>
-                            <td>{{ item.emeterList[0].current }}</td>
-                            <td>{{ item.emeterList[1].current }}</td>
-                            <td>{{ item.emeterList[2].current }}</td>
-                            <td>{{ item.emeterList[3].current }}</td>
-                        </tr>
-                        <tr>
-                            <td>energy:</td>
-                            <td>{{ item.emeterList[0].energy }}</td>
-                            <td>{{ item.emeterList[1].energy }}</td>
-                            <td>{{ item.emeterList[2].energy }}</td>
-                            <td>{{ item.emeterList[3].energy }}</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>power:</td>
-                            <td>{{ item.emeterList[0].power }}</td>
-                            <td>{{ item.emeterList[1].power }}</td>
-                            <td>{{ item.emeterList[2].power }}</td>
-                            <td>{{ item.emeterList[3].power }}</td>
-                        </tr>
-                        <tr>
-                            <td>pf:</td>
-                            <td>{{ item.emeterList[0].pf }}</td>
-                            <td>{{ item.emeterList[1].pf }}</td>
-                            <td>{{ item.emeterList[2].pf }}</td>
-                            <td>{{ item.emeterList[3].pf }}</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>voltage:</td>
-                            <td>{{ item.emeterList[0].voltage }}</td>
-                            <td>{{ item.emeterList[1].voltage }}</td>
-                            <td>{{ item.emeterList[2].voltage }}</td>
-                            <td>{{ item.emeterList[3].voltage }}</td>
-                        </tr>
-                        <tr>
-                            <td>total:</td>
-                            <td>{{ item.emeterList[0].total }}</td>
-                            <td>{{ item.emeterList[1].total }}</td>
-                            <td>{{ item.emeterList[2].total }}</td>
-                            <td>{{ item.emeterList[3].total }}</td>
-                        </tr>
-                        <tr class="greyTr">
-                            <td>total_returned:</td>
-                            <td>{{ item.emeterList[0].total_returned }}</td>
-                            <td>{{ item.emeterList[1].total_returned }}</td>
-                            <td>{{ item.emeterList[2].total_returned }}</td>
-                            <td>{{ item.emeterList[3].total_returned }}</td>
-                        </tr>
-                        <tr>
-                            <td>emeterIndex:</td>
-                            <td>{{ item.emeterList[0].emeterIndex }}</td>
-                            <td>{{ item.emeterList[1].emeterIndex }}</td>
-                            <td>{{ item.emeterList[2].emeterIndex }}</td>
-                            <td>{{ item.emeterList[3].emeterIndex }}</td>
-                        </tr>
-
+                      <Em3 :shelly="item" />
                     </div>
                 </table>
             </div>
@@ -162,23 +23,27 @@
             <input v-model="maxPower">Max Power in Watt
             <button @click="sendMaxPower">Ok</button>
         </div>
-    </div>
-</template>
+    </div >
+</template >
+<script setup>
+    import Em3 from'./Em3.vue'
+    import Pro4pm from './Pro4pm.vue'
+</script >
+    <script>
 
-<script>
-export default {
-    name: 'ShellyView',
+        export default {
+            name: 'ShellyView',
 
-    data() {
+        data() {
         return {
             shellys: null,
-            maxPower: "0",
+        maxPower: "0",
 
         }
     },
 
-    methods: {
-        async getShellys() {
+        methods: {
+            async getShellys() {
             await fetch("/api/shellys/shellys").then((response) => response.text()).then((data) => {
                 this.shellys = JSON.parse(data);
 
@@ -196,14 +61,14 @@ export default {
 
             let temp;
 
-            temp = this.maxPower.replace(/,/, ".");
-            temp = parseFloat(temp);
-            console.log(temp)
-            if (isNaN(temp)) {
-                alert("x");
+        temp = this.maxPower.replace(/,/, ".");
+        temp = parseFloat(temp);
+        console.log(temp)
+        if (isNaN(temp)) {
+            alert("x");
             }
-            else {
-                console.log("return temp")
+        else {
+            console.log("return temp")
                 this.maxPower = temp;
             }
 
@@ -212,13 +77,13 @@ export default {
 
         sendMaxPower() {
             this.getMaxPower();
-            // Simple POST request with a JSON body using fetch
-            const requestOptions = {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ maxPower: this.maxPower })
+        // Simple POST request with a JSON body using fetch
+        const requestOptions = {
+            method: "POST",
+        headers: {"Content-Type": "application/json" },
+        body: JSON.stringify({maxPower: this.maxPower })
             };
-            fetch("/api/shellys/setting/setMaxPower", requestOptions)
+        fetch("/api/shellys/setting/setMaxPower", requestOptions)
                 .then(response => response.json())
                 .then(data => (this.postId = data.id));
         },
@@ -237,14 +102,18 @@ export default {
 
     },
 
-    mounted() {
-        this.getShellys();
+        mounted() {
+            this.getShellys();
         this.requestMaxPower();
     }
 }
 </script>
 
 <style>
+.conntainer {
+    flex: 25;
+}
+
 .card {
     width: max-content;
     border: 1px solid black;
@@ -259,5 +128,13 @@ export default {
 
 .cardHeader {
     background-color: darkgray;
+}
+
+.col {
+    flex: 5
+}
+
+.textBold {
+    font-weight: bold;
 }
 </style>
