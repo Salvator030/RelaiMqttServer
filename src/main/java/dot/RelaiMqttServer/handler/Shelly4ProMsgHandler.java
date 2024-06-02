@@ -41,6 +41,8 @@ public class Shelly4ProMsgHandler implements MsgHandler {
 
     }
 
+    
+
     private void setShellyStatusValues(BrokerMsgEnity brokerMsgEnity, JSONObject jObject) {
         // zuordnen der werte
         JSONObject msg = jObject.getJSONObject("msg");
@@ -76,11 +78,15 @@ public class Shelly4ProMsgHandler implements MsgHandler {
     }
 
     private void setShellyAnnounceValue(BrokerMsgEnity brokerMsgEnity, JSONObject msg) {
+        try{
         ShellyEntity shelly = SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
         shelly.setIp(msg.getString("ip"));
         shelly.setMac(msg.getString("mac"));
         shelly.setFw_ver(msg.getString("fw_ver"));
         shelly.setNew_fw(msg.getBoolean("new_fw"));
+    }catch(Exception exception){
+        log.error("setAnaounce(): " + exception + "\n" + brokerMsgEnity.getMsg());
+    }
     }
 
     private void setEvent(BrokerMsgEnity brokerMsgEnity, JSONObject msg) {
