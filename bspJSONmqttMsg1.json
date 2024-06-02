@@ -1,4 +1,4 @@
-topic: shellypro4pm-c8c9a3ef0674/events
+//topic: shellypro4pm-c8c9a3ef0674/events
 
 
 {
@@ -82,8 +82,8 @@ topic: shellypro4pm-c8c9a3ef0674/events
 -------------------------------------------------------------------
 
 topicName : shellypro4pm-c8c9a3ef0674/status/switch:2
+
 {
-	"msg":{
 		"id":2,
 		"source":"init", 
 		"output":true,
@@ -102,10 +102,7 @@ topicName : shellypro4pm-c8c9a3ef0674/status/switch:2
 		}
 	
 	},
-	"date":"13-07-2022 - 15:26:59",
-	"clientID":"shellypro4pm-c8c9a3ef0674",
-	"topicName":"shellypro4pm-c8c9a3ef0674/status/switch:2"
-}
+
 
 -----------------------------------------------------
 
@@ -210,25 +207,30 @@ GET /status (mqtt anaunce request, answer)
 	"fs_free":156875,
 	"uptime":555
 	},
-	"date":"26-07-2022 - 11:28:41",
-	"clientID":"shellyem3-3494546ED09F",
-	"topicName":"shellies/shellyem3-3494546ED09F/info"
+"date":"26-07-2022 - 11:28:41",
+"clientID":"shellyem3-3494546ED09F",
+"topicName":"shellies/shellyem3-3494546ED09F/info"
 }
 
 
 	--------------------------------------------------------------
 
-	topicName:"shellies/shellyem3-3494546ED09F/announce"
-				"shellies/announce"
+	topicName:shellies/shellyem3-3494546ED09F/announce
+				shellies/announce
 
-	{"id":"shellyem3-3494546ED09F",
-	"model":"SHEM-3",
-	
-	"mac":"3494546ED09F",
-	"ip":"192.168.101.187",
-	"new_fw":false,
-	"fw_ver":"20220324-123835/v1.11.8-3EM-fix-g0014dcb"
-	}
+			{
+				"msg":{
+					"id":"shellyem3-3494546ED09F",
+					"model":"SHEM-3",
+					"mac":"3494546ED09F",
+					"ip":"192.168.101.187",
+					"new_fw":false,
+					"fw_ver":"20220324-123835/v1.11.8-3EM-fix-g0014dcb"
+				},
+				"date":"26-07-2022 - 11:28:41",
+				"clientID":"shellyem3-3494546ED09F",
+				"topicName":"shellies/shellyem3-3494546ED09F/announce"
+			}
 	
 	--------------------------------------------------------------------------------------------------------
 
@@ -242,13 +244,20 @@ GET /status (mqtt anaunce request, answer)
 	"topicName":"shellies/shellyem3-3494546ED09F/emeter/0/power"
 	}
 
-
 	shellies/shellyem3-3494546ED09F/emeter/0/pf
 
 	{"msg":"0.74",
 	"date":"26-07-2022 - 11:28:41",
 	"clientID":"shellyem3-3494546ED09F",
 	"topicName":"shellies/shellyem3-3494546ED09F/emeter/0/pf"}
+
+
+	shellies/shellyem3-3494546ED09F/emeter/0/current
+
+	{"msg":"0.69",
+	"date":"26-07-2022 - 11:28:41",
+	"clientID":"shellyem3-3494546ED09F",
+	"topicName":"shellies/shellyem3-3494546ED09F/emeter/0/current"},
 	-----------
 	[
 		{"msg":"true","date":"26-07-2022 - 11:28:39","clientID":"shellypro4pm-c8c9a3ef0674","topicName":"shellypro4pm-c8c9a3ef0674/online"}
