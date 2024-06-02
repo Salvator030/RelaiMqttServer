@@ -85,12 +85,11 @@ GET /status (mqtt anaunce request, answer)
 
 "topicName":"shellies/shellyem3-3494546ED09F/info"
 
-	{
+{"msg":{
 	"wifi_sta":{
 		"connected":true,
 		"ssid":"mischwerk.garden",
-		"ip":"192.168.101.187",
-		"rssi":-53
+		"ip":"192.168.101.187","rssi":-53
 	},
 	"cloud":{
 		"enabled":false,
@@ -116,7 +115,8 @@ GET /status (mqtt anaunce request, answer)
 		"timer_remaining":0,
 		"overpower":false,
 		"is_valid":true,
-		"source":"http"}
+		"source":"http"
+		}
 	],
 	"emeters":[
 		{"power":119.22,
@@ -131,14 +131,18 @@ GET /status (mqtt anaunce request, answer)
 		"pf":0.00,
 		"current":0.01,
 		"voltage":0.11,
-		"is_valid":true,"total":0.0,"total_returned":0.0},
+		"is_valid":true,
+		"total":0.0,
+		"total_returned":0.0
+		},
 		{"power":0.00,
 		"pf":0.00,
 		"current":0.01,
 		"voltage":0.09,
 		"is_valid":true,
 		"total":0.0,
-		"total_returned":0.0}
+		"total_returned":0.0
+		}
 	],
 	"total_power":119.22,
 	"fs_mounted":true,
@@ -153,7 +157,12 @@ GET /status (mqtt anaunce request, answer)
 	"fs_size":233681,
 	"fs_free":156875,
 	"uptime":555
-	}
+	},
+	"date":"26-07-2022 - 11:28:41",
+	"clientID":"shellyem3-3494546ED09F",
+	"topicName":"shellies/shellyem3-3494546ED09F/info"
+}
+
 
 	--------------------------------------------------------------
 

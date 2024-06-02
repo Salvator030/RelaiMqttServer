@@ -37,7 +37,7 @@ public class WifiEntity {
     }
 
     public String getIp(){
-        return this.ssid;
+        return this.ip;
     }
 
     public void setIp(String ip){

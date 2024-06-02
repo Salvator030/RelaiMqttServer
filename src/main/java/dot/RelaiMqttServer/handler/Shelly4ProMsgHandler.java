@@ -36,7 +36,7 @@ public class Shelly4ProMsgHandler implements MsgHandler {
         }
 
         else if (brokerMsgEnity.getTopic().contains("events")) {
-            setValue(brokerMsgEnity, msg);
+            setEvent(brokerMsgEnity, msg);
         }
 
     }
@@ -83,7 +83,7 @@ public class Shelly4ProMsgHandler implements MsgHandler {
         shelly.setNew_fw(msg.getBoolean("new_fw"));
     }
 
-    private void setValue(BrokerMsgEnity brokerMsgEnity, JSONObject jsonObject) {
+    private void setEvent(BrokerMsgEnity brokerMsgEnity, JSONObject jsonObject) {
         LOGGER.info("jsonObject " + jsonObject.toString());
         LOGGER.info("keySet " + jsonObject.keySet().toArray(new String[0])[0]);
         JSONObject msg = jsonObject.getJSONObject("msg");
