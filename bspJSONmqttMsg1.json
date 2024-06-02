@@ -1,4 +1,4 @@
-topic: shellypro4pm-c8c9a3ef0674/events
+//topic: shellypro4pm-c8c9a3ef0674/events
 
 
 {
@@ -82,8 +82,8 @@ topic: shellypro4pm-c8c9a3ef0674/events
 -------------------------------------------------------------------
 
 topicName : shellypro4pm-c8c9a3ef0674/status/switch:2
+
 {
-	"msg":{
 		"id":2,
 		"source":"init", 
 		"output":true,
@@ -102,10 +102,7 @@ topicName : shellypro4pm-c8c9a3ef0674/status/switch:2
 		}
 	
 	},
-	"date":"13-07-2022 - 15:26:59",
-	"clientID":"shellypro4pm-c8c9a3ef0674",
-	"topicName":"shellypro4pm-c8c9a3ef0674/status/switch:2"
-}
+
 
 -----------------------------------------------------
 

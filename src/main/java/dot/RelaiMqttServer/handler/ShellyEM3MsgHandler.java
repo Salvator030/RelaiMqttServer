@@ -78,13 +78,17 @@ public class ShellyEM3MsgHandler implements MsgHandler {
     }
 
     private void setAnnaunce(BrokerMsgEnity brokerMsgEnity) {
-log.info("an: " + brokerMsgEnity.getMsg());
+        try{
+        log.info("an: " + brokerMsgEnity.getMsg());
         JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
         ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
         shelly.setIp(msg.getString("ip"));
         shelly.setMac(msg.getString("mac"));
         shelly.setFw_ver(msg.getString("fw_ver"));
         shelly.setNew_fw(msg.getBoolean("new_fw"));
+    }catch(Exception exception){
+        log.error("setAnaounce(): " + exception + "\n" + brokerMsgEnity.getMsg());
+    }
     }
 
     private void setInfo(BrokerMsgEnity brokerMsgEnity, String msgString) {
