@@ -29,7 +29,7 @@ public class ShellyEM3MsgHandler implements MsgHandler {
                     .get(Integer.parseInt(brokerMsgEnity.getTopic().split("/")[3])).setStatus(brokerMsgEnity.getMsg());
 
         } else if (brokerMsgEnity.getTopic().contains("announce")) {
-            // setShellyAnnounceValue(brokerMsgEnity,brokerMsgEnity.getMsg());
+            setAnnaunce(brokerMsgEnity);
         } else if (brokerMsgEnity.getTopic().contains("info")) {
             setInfo(brokerMsgEnity, brokerMsgEnity.getMsg());
         }
@@ -41,6 +41,7 @@ public class ShellyEM3MsgHandler implements MsgHandler {
         EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID()))
                 .getEmeterList().get(emeterIndex);
         JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
+        log.info("ss" + msg);
         if (brokerMsgEnity.getTopic().contains("total_returned")) {
             emeter.setTotal_returned(Float.parseFloat(msg.getString("msg")));
         } else if (brokerMsgEnity.getTopic().contains("total")) {
@@ -76,9 +77,9 @@ public class ShellyEM3MsgHandler implements MsgHandler {
 
     }
 
-    private void setAnnaunce(BrokerMsgEnity brokerMsgEnity, String msgString) {
-
-        JSONObject msg = new JSONObject(msgString);
+    private void setAnnaunce(BrokerMsgEnity brokerMsgEnity) {
+log.info("an: " + brokerMsgEnity.getMsg());
+        JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
         ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
         shelly.setIp(msg.getString("ip"));
         shelly.setMac(msg.getString("mac"));
