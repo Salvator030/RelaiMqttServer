@@ -1,18 +1,84 @@
-topic: 
+topic: shellypro4pm-c8c9a3ef0674/events
 
 
-{"msg":{"src":"shellypro4pm-c8c9a3ef0674",
-		"dst":"shellypro4pm-c8c9a3ef0674/events",
-		"method":"NotifyStatus",
-		"params":{
-			"ts":1657722360.56,
-			"switch:2":{
-				"id":2,
-				"apower":22
-			}
+{
+	"src":"shellypro4pm-c8c9a3ef0674",
+	"dst":"shellypro4pm-c8c9a3ef0674/events",
+	"method":"NotifyStatus",
+	"params":{
+		"ts":1657722360.56,
+		"switch:2":{
+			"id":2,
+			"apower":22
 		}
+	}
+}
+
+{
+	"dst":"shellypro4pm-c8c9a3ef0674/events",
+	"method":"NotifyStatus",
+	"src":"shellypro4pm-c8c9a3ef0674",
+	"params":{
+		"switch:0":{
+			"current":0.249,
+			"id":0
+		},
+		"ts":1.65883133776E9
+	}
+}
+
+{"dst":"shellypro4pm-c8c9a3ef0674/events",
+"method":"NotifyStatus",
+"src":"shellypro4pm-c8c9a3ef0674",
+"params":{
+	"switch:0":{
+		"pf":0.59,
+		"id":0
+	},
+	"ts":1.65883133776E9
 }}
 
+{"dst":"shellypro4pm-c8c9a3ef0674/events",
+"method":"NotifyStatus",
+"src":"shellypro4pm-c8c9a3ef0674",
+"params":{
+	"switch:0":{
+		"aenergy":{
+			"by_minute":[
+				823.081,
+				830.306,
+				841.471],
+			"total":119526.188,
+			"minute_ts":1658831339
+		},
+		"id":0
+	},
+	"ts":1.65883134064E9
+}}
+
+{"dst":"shellypro4pm-c8c9a3ef0674/events",
+"method":"NotifyStatus",
+"src":"shellypro4pm-c8c9a3ef0674",
+"params":{
+	"switch:0":{
+		"current":0.299,"id":0
+	},
+	"ts":1.65883137327E9
+}}
+
+{"dst":"shellypro4pm-c8c9a3ef0674/events",
+"method":"NotifyStatus",
+"src":"shellypro4pm-c8c9a3ef0674",
+"params":{
+	"switch:0":{
+		"temperature":{
+			"tC":54.5, 
+			"tF":130.0
+		},
+		"id":0
+	},
+	"ts":1.65883137327E9
+}}
 -------------------------------------------------------------------
 
 topicName : shellypro4pm-c8c9a3ef0674/status/switch:2
