@@ -83,10 +83,9 @@ public class Shelly4ProMsgHandler implements MsgHandler {
         shelly.setNew_fw(msg.getBoolean("new_fw"));
     }
 
-    private void setEvent(BrokerMsgEnity brokerMsgEnity, JSONObject jsonObject) {
-        LOGGER.info("jsonObject " + jsonObject.toString());
-        LOGGER.info("keySet " + jsonObject.keySet().toArray(new String[0])[0]);
-        JSONObject msg = jsonObject.getJSONObject("msg");
+    private void setEvent(BrokerMsgEnity brokerMsgEnity, JSONObject msg) {
+        LOGGER.info("setEventMSG " + msg.toString());
+        //get params from msg
         JSONObject params = msg.getJSONObject("params");
         LOGGER.info("params " + params.toString());
         String[] paramKeys = params.keySet().toArray(new String[0]);
@@ -96,9 +95,10 @@ public class Shelly4ProMsgHandler implements MsgHandler {
         Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) this.SHELLYS_AND_CHANELS
                 .getDevice(brokerMsgEnity.getClientID());
         ChanelEntity chanel = shelly.getChannels().get(index);
+        String searchValue = switchI.keySet().toArray(new String[0])[0];
 
         try{
-            switch (switchI.keySet().toArray(new String[0])[0]) {
+            switch (searchValue) {
 
             case "source": {
                 LOGGER.info("source " );
@@ -118,7 +118,7 @@ public class Shelly4ProMsgHandler implements MsgHandler {
                 break;
             }
             case "voltage": {
-                LOGGER.info("voltage " );
+                LOGGER.info("voltage" );
                 chanel.setVoltage(switchI.getDouble("voltage"));
                 break;
             }
@@ -134,7 +134,7 @@ public class Shelly4ProMsgHandler implements MsgHandler {
             }
             case "aenergy": {
                 LOGGER.info("aenergy " );
-                JSONObject enegry = msg.getJSONObject("aenergy");
+                JSONObject enegry = switchI.getJSONObject("aenergy");
                 chanel.setEnergy_total(enegry.getFloat("total"));
 
                 JSONArray jA = enegry.getJSONArray("by_minute");
@@ -143,14 +143,18 @@ public class Shelly4ProMsgHandler implements MsgHandler {
                     array[i] = jA.optFloat(i);
                 }
                 chanel.setEnergy_byMinute(array);
-                chanel.setEnergy_minuteTs(enegry.getFloat("get"));
+                chanel.setEnergy_minuteTs(enegry.getFloat("minute_ts"));
                 break;
             }
             case "temperature": {
-                JSONObject temp = msg.getJSONObject("temperature");
+                JSONObject temp = switchI.getJSONObject("temperature");
                 chanel.setTemp_c(temp.getFloat("tC"));
                 chanel.setTemp_f(temp.getFloat("tF"));
                 break;
+            }
+
+            default : {
+                LOGGER.info("setEvent(): Not Found << searchValue >>: "+ searchValue );
             }
 
         }
