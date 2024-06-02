@@ -14,8 +14,9 @@ import org.slf4j.LoggerFactory;
 
 public class ShellyEM3MsgHandler implements MsgHandler {
 
-    private static Logger log = LoggerFactory.getLogger(new Exception().fillInStackTrace().getStackTrace()[0].getClassName());
-   
+    private static Logger log = LoggerFactory
+            .getLogger(new Exception().fillInStackTrace().getStackTrace()[0].getClassName());
+
     @Override
     public void handelMsg(BrokerMsgEnity brokerMsgEnity) {
 
@@ -29,11 +30,9 @@ public class ShellyEM3MsgHandler implements MsgHandler {
 
         } else if (brokerMsgEnity.getTopic().contains("announce")) {
             // setShellyAnnounceValue(brokerMsgEnity,brokerMsgEnity.getMsg());
+        } else if (brokerMsgEnity.getTopic().contains("info")) {
+            setInfo(brokerMsgEnity, brokerMsgEnity.getMsg());
         }
-        else if (brokerMsgEnity.getTopic().contains("info")) {
-            setInfo(brokerMsgEnity,brokerMsgEnity.getMsg());
-        }
-
 
     }
 
@@ -41,31 +40,34 @@ public class ShellyEM3MsgHandler implements MsgHandler {
         int emeterIndex = Integer.parseInt(brokerMsgEnity.getTopic().split("/")[3]);
         EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID()))
                 .getEmeterList().get(emeterIndex);
-
-        if (brokerMsgEnity.getTopic().contains("total")) {
-            JSONObject container = new JSONObject(brokerMsgEnity.getMsg());
-            emeter.setTotal(Float.parseFloat(container.getString("msg")));
-        } else if (brokerMsgEnity.getTopic().contains("total_returned")) {
-            emeter.setTotal_returned(Float.parseFloat(brokerMsgEnity.getMsg()));
+        JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
+        if (brokerMsgEnity.getTopic().contains("total_returned")) {
+            emeter.setTotal_returned(Float.parseFloat(msg.getString("msg")));
+        } else if (brokerMsgEnity.getTopic().contains("total")) {
+            emeter.setTotal(Float.parseFloat(msg.getString("msg")));
         } else if (brokerMsgEnity.getTopic().contains("power")) {
-            emeter.setPower(Float.parseFloat(brokerMsgEnity.getMsg()));
+            emeter.setPower(Float.parseFloat(msg.getString("msg")));
         } else if (brokerMsgEnity.getTopic().contains("current")) {
-            emeter.setCurrent(Float.parseFloat(brokerMsgEnity.getMsg()));
+            emeter.setCurrent(Float.parseFloat(msg.getString("msg")));
         } else if (brokerMsgEnity.getTopic().contains("pf")) {
-            emeter.setPf(Float.parseFloat(brokerMsgEnity.getMsg()));
+            emeter.setPf(Float.parseFloat(msg.getString("msg")));
         } else if (brokerMsgEnity.getTopic().contains("voltage")) {
-            emeter.setVoltage(Float.parseFloat(brokerMsgEnity.getMsg()));
+            emeter.setVoltage(Float.parseFloat(msg.getString("msg")));
+        } else if (brokerMsgEnity.getTopic().contains("energy")) {
+            emeter.setEnergy(Float.parseFloat(msg.getString("msg")));
+        } else {
+            log.error("setEmeterValue(): topic unkown: " + brokerMsgEnity.getTopic());
         }
     }
 
-    private void setEmeter(EmeterEntity emeter, JSONObject emeterJsonObject){
+    private void setEmeter(EmeterEntity emeter, JSONObject emeterJsonObject) {
         emeter.setTotal(emeterJsonObject.getFloat("total"));
         emeter.setTotal_returned(emeterJsonObject.getFloat("total_returned"));
         emeter.setPower(emeterJsonObject.getFloat("power"));
         emeter.setCurrent(emeterJsonObject.getFloat("current"));
         emeter.setPf(emeterJsonObject.getFloat("pf"));
         emeter.setVoltage(emeterJsonObject.getFloat("voltage"));
-      
+
     }
 
     private void setRelayValue(BrokerMsgEnity brokerMsgEnity) {
@@ -75,7 +77,7 @@ public class ShellyEM3MsgHandler implements MsgHandler {
     }
 
     private void setAnnaunce(BrokerMsgEnity brokerMsgEnity, String msgString) {
-       
+
         JSONObject msg = new JSONObject(msgString);
         ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
         shelly.setIp(msg.getString("ip"));
@@ -84,27 +86,28 @@ public class ShellyEM3MsgHandler implements MsgHandler {
         shelly.setNew_fw(msg.getBoolean("new_fw"));
     }
 
-    private void setInfo(BrokerMsgEnity brokerMsgEnity, String msgString){
-        try{
+    private void setInfo(BrokerMsgEnity brokerMsgEnity, String msgString) {
+        try {
             JSONObject msg = new JSONObject(msgString);
             ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
             log.info(msg.toString());
-            JSONObject wifi = msg.getJSONObject("wifi_sta");     
+            JSONObject wifi = msg.getJSONObject("wifi_sta");
             log.info(wifi.toString());
             shelly.getWifi_sta().setConnected(wifi.getBoolean("connected"));
             shelly.getWifi_sta().setSsid(wifi.getString("ssid"));
             shelly.getWifi_sta().setIp(wifi.getString("ip"));
             shelly.getWifi_sta().setRssi(wifi.getInt("rssi"));
 
-            JSONObject cloud = msg.getJSONObject("cloud");     
+            JSONObject cloud = msg.getJSONObject("cloud");
             shelly.getCloud().setConnected(cloud.getBoolean("connected"));
             shelly.getCloud().setEnabled(cloud.getBoolean("enabled"));
 
             JSONArray emeters = msg.getJSONArray("emeters");
-            int count =emeters.length();
-            for(int i=0;i<count;i++){
-                EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID()))
-                .getEmeterList().get(i);
+            int count = emeters.length();
+            for (int i = 0; i < count; i++) {
+                EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS
+                        .getDevice(brokerMsgEnity.getClientID()))
+                        .getEmeterList().get(i);
 
                 setEmeter(emeter, emeters.getJSONObject(i));
             }
@@ -112,8 +115,7 @@ public class ShellyEM3MsgHandler implements MsgHandler {
             shelly.setMac(msg.getString("mac"));
             shelly.setTotal_power(msg.getFloat("total_power"));
 
-        }
-        catch(Exception exception){    
+        } catch (Exception exception) {
             log.error(msgString, exception);
         }
     }

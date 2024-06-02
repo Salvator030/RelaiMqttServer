@@ -109,20 +109,6 @@ topicName : shellypro4pm-c8c9a3ef0674/status/switch:2
 
 -----------------------------------------------------
 
-topicName:  shellypro4pm-c8c9a3ef0674/events
-
-{"dst":"shellypro4pm-c8c9a3ef0674/events",
-"method":"NotifyStatus",
-"src":"shellypro4pm-c8c9a3ef0674",
-"params":{
-	"switch:0":{
-		"apower":30.2,
-		"id":0
-	},
-	"ts":1.65883133776E9
-}
-}
----------------------------------------------------------------------------
 
 GET /status (mqtt anaunce request, answer)
 
@@ -246,6 +232,24 @@ GET /status (mqtt anaunce request, answer)
 	
 	--------------------------------------------------------------------------------------------------------
 
+	shellies/shellyem3-3494546ED09F/emeter/0/power
+
+	{"msg":
+	"119.22",
+	"date":
+	"26-07-2022 - 11:28:41",
+	"clientID":"shellyem3-3494546ED09F",
+	"topicName":"shellies/shellyem3-3494546ED09F/emeter/0/power"
+	}
+
+
+	shellies/shellyem3-3494546ED09F/emeter/0/pf
+
+	{"msg":"0.74",
+	"date":"26-07-2022 - 11:28:41",
+	"clientID":"shellyem3-3494546ED09F",
+	"topicName":"shellies/shellyem3-3494546ED09F/emeter/0/pf"}
+	-----------
 	[
 		{"msg":"true","date":"26-07-2022 - 11:28:39","clientID":"shellypro4pm-c8c9a3ef0674","topicName":"shellypro4pm-c8c9a3ef0674/online"}
 		,{"msg":"{"src":"shellypro4pm-c8c9a3ef0674","dst":"shellypro4pm-c8c9a3ef0674/events","method":"NotifyStatus","params":{"ts":1658831320.34,"mqtt":{"connected":true}}}","date":"26-07-2022 - 11:28:39","clientID":"shellypro4pm-c8c9a3ef0674","topicName":"shellypro4pm-c8c9a3ef0674/events/rpc"},
