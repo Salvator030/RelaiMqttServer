@@ -5,7 +5,9 @@ import dot.RelaiMqttServer.evnt.ShellyAnalysEventPublisher;
 import dot.RelaiMqttServer.networkProtocol.mqtt.ShellysAndChanels;
 import dot.RelaiMqttServer.networkProtocol.mqtt.incommingMsg.BrokerMsgEnity;
 import dot.RelaiMqttServer.shellyDevice.ChanelEntity;
+import dot.RelaiMqttServer.shellyDevice.EmeterEntity;
 import dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity;
+import dot.RelaiMqttServer.shellyDevice.ShellyEM3Entity;
 import dot.RelaiMqttServer.shellyDevice.ShellyEntity;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,6 +40,7 @@ public class Shelly4ProMsgHandler implements MsgHandler {
         else if (brokerMsgEnity.getTopic().contains("events")) {
             setEvent(brokerMsgEnity, msg);
         }
+        else { log.error("handelMsg(): uknown topic: " + brokerMsgEnity.getTopic() + "\n" + brokerMsgEnity.getMsg());}
 
     }
 
@@ -87,6 +90,32 @@ public class Shelly4ProMsgHandler implements MsgHandler {
     }catch(Exception exception){
         log.error("setAnaounce(): " + exception + "\n" + brokerMsgEnity.getMsg());
     }
+    }
+
+     private void setInfo(BrokerMsgEnity brokerMsgEnity) {
+        try {
+            JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
+            Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
+            log.info("setInfo(): msg: " + brokerMsgEnity.getMsg());
+           
+            
+
+            JSONArray emeters = msg.getJSONArray("emeters");
+            int count = emeters.length();
+            for (int i = 0; i < count; i++) {
+                EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS
+                        .getDevice(brokerMsgEnity.getClientID()))
+                        .getEmeterList().get(i);
+
+                setEmeter(emeter, emeters.getJSONObject(i));
+            }
+
+            shelly.setMac(msg.getString("mac"));
+            shelly.setTotal_power(msg.getFloat("total_power"));
+
+        } catch (Exception exception) {
+            log.error(msgString, exception);
+        }
     }
 
     private void setEvent(BrokerMsgEnity brokerMsgEnity, JSONObject msg) {
