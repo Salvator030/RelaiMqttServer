@@ -1,4 +1,4 @@
-package dot.RelaiMqttServer.handler;
+package dot.RelaiMqttServer.handler.deviceHandler;
 
 import dot.RelaiMqttServer.evnt.EAnalys;
 import dot.RelaiMqttServer.evnt.ShellyAnalysEventPublisher;

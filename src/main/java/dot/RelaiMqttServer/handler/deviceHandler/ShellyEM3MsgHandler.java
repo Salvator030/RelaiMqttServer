@@ -1,4 +1,4 @@
-package dot.RelaiMqttServer.handler;
+package dot.RelaiMqttServer.handler.deviceHandler;
 
 import dot.RelaiMqttServer.networkProtocol.mqtt.incommingMsg.BrokerMsgEnity;
 import dot.RelaiMqttServer.shellyDevice.EmeterEntity;
