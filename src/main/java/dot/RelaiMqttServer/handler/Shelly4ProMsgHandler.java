@@ -5,7 +5,6 @@ import dot.RelaiMqttServer.evnt.ShellyAnalysEventPublisher;
 import dot.RelaiMqttServer.networkProtocol.mqtt.ShellysAndChanels;
 import dot.RelaiMqttServer.networkProtocol.mqtt.incommingMsg.BrokerMsgEnity;
 import dot.RelaiMqttServer.shellyDevice.ChanelEntity;
-import dot.RelaiMqttServer.shellyDevice.EmeterEntity;
 import dot.RelaiMqttServer.shellyDevice.Shelly4ProPmEntity;
 import dot.RelaiMqttServer.shellyDevice.ShellyEM3Entity;
 import dot.RelaiMqttServer.shellyDevice.ShellyEntity;
@@ -39,6 +38,9 @@ public class Shelly4ProMsgHandler implements MsgHandler {
 
         else if (brokerMsgEnity.getTopic().contains("events")) {
             setEvent(brokerMsgEnity, msg);
+        }
+        else if (brokerMsgEnity.getTopic().contains("info")) {
+            setInfo(brokerMsgEnity);
         }
         else { log.error("handelMsg(): uknown topic: " + brokerMsgEnity.getTopic() + "\n" + brokerMsgEnity.getMsg());}
 
@@ -74,8 +76,6 @@ public class Shelly4ProMsgHandler implements MsgHandler {
         chanel.setTemp_c(temp.getFloat("tC"));
         chanel.setTemp_f(temp.getFloat("tF"));
         chanel.setDateOfChange((brokerMsgEnity.getDate()));
-        // setzen des chanels in die jeweilige map
-        log.info("isOutput? " + msg.getBoolean("output"));
         SHELLYS_AND_CHANELS.setChanelOutputMap(msg.getBoolean("output"), chanel);
 
     }
@@ -97,27 +97,54 @@ public class Shelly4ProMsgHandler implements MsgHandler {
             JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
             Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
             log.info("setInfo(): msg: " + brokerMsgEnity.getMsg());
-           
+            JSONObject wifi = msg.getJSONObject("wifi_sta");
+            log.info(wifi.toString());
+            shelly.getWifi_sta().setConnected(wifi.getBoolean("connected"));
+            shelly.getWifi_sta().setSsid(wifi.getString("ssid"));
+            shelly.getWifi_sta().setIp(wifi.getString("ip"));
+            shelly.getWifi_sta().setRssi(wifi.getInt("rssi"));
+
+            JSONObject cloud = msg.getJSONObject("cloud");
+            shelly.getCloud().setConnected(cloud.getBoolean("connected"));
+            shelly.getCloud().setEnabled(cloud.getBoolean("enabled"));
             
 
-            JSONArray emeters = msg.getJSONArray("emeters");
-            int count = emeters.length();
+            JSONArray chanels = msg.getJSONArray("emeters");
+            int count = chanels.length();
             for (int i = 0; i < count; i++) {
-                EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS
+                ChanelEntity chanel = ((Shelly4ProPmEntity) this.SHELLYS_AND_CHANELS
                         .getDevice(brokerMsgEnity.getClientID()))
-                        .getEmeterList().get(i);
+                        .getChannels().get(i);
 
-                setEmeter(emeter, emeters.getJSONObject(i));
+                setChanel(chanel, chanels.getJSONObject(i));
             }
 
             shelly.setMac(msg.getString("mac"));
             shelly.setTotal_power(msg.getFloat("total_power"));
 
         } catch (Exception exception) {
-            log.error(msgString, exception);
+            log.error("setInfo(): parse Msg Err:\n " + brokerMsgEnity.getMsg(), exception);
         }
     }
 
+    private void setChanel(ChanelEntity chanel, JSONObject chanelJsonObject) {
+
+        JSONObject enegry = chanelJsonObject.getJSONObject("aenergy");
+        chanel.setEnergy_total(enegry.getFloat("total"));
+
+        JSONArray jA = enegry.getJSONArray("by_minute");
+        float[] array = new float[3];
+        for (int i = 0; i < 3; i++) {
+            array[i] = jA.optFloat(i);
+        }
+        chanel.setEnergy_total(chanelJsonObject.getFloat("energy_total"));
+        chanel.setEnergy_byMinute(array);
+        chanel.setPower(chanelJsonObject.getFloat("power"));
+        chanel.setCurrent(chanelJsonObject.getFloat("current"));
+        chanel.setPf(chanelJsonObject.getFloat("pf"));
+        chanel.setVoltage(chanelJsonObject.getFloat("voltage"));
+
+    }
     private void setEvent(BrokerMsgEnity brokerMsgEnity, JSONObject msg) {
         LOGGER.info("setEventMSG " + msg.toString());
         //get params from msg
