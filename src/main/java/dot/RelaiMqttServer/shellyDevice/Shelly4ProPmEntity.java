@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Shelly4ProPmEntity extends ShellyEntity{
 
   @OneToMany
-  private WifiEntity wifi;
+  private WifiEntity wifi_sta;
   private CloudEntity cloud;
    private  ArrayList<ChanelEntity> channels;
    private float total_power;
@@ -19,8 +19,8 @@ public class Shelly4ProPmEntity extends ShellyEntity{
         initChannels(clientID);
    }
     
-    public WifiEntity getWifi() {
-        return wifi;
+    public WifiEntity getWifi_sta() {
+        return wifi_sta;
     }
 
      public CloudEntity getCloud() {
