@@ -2,7 +2,6 @@ package dot.RelaiMqttServer.handler;
 
 import dot.RelaiMqttServer.evnt.ShellyAnalysEventPublisher;
 import dot.RelaiMqttServer.handler.deviceHandler.DeviceBasicMsgHandler;
-import dot.RelaiMqttServer.handler.deviceHandler.MsgHandler;
 import dot.RelaiMqttServer.handler.deviceHandler.Shelly4ProMsgHandler;
 import dot.RelaiMqttServer.handler.deviceHandler.ShellyEM3MsgHandler;
 import dot.RelaiMqttServer.networkProtocol.mqtt.ShellysAndChanels;
@@ -22,12 +21,11 @@ import java.util.List;
 
 
 @Component
-public class MqttBrokerIncommingMsgHandler implements MsgHandler{
+public class MqttBrokerIncommingMsgHandler {
 
-    private static Logger log = LoggerFactory.getLogger(new Exception().fillInStackTrace().getStackTrace()[0].getClassName());
     private static List<BrokerMsgEnity> msgList = new ArrayList<>(100);
     
-    private ShellysAndChanels shellysAndChanels = new ShellysAndChanels();
+   
 
     @Autowired
     ShellyHandler shellyHandler;

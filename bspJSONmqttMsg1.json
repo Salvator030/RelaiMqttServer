@@ -132,9 +132,9 @@ GET /status (mqtt anaunce request, answer)
 
 -------------------------------------------------
 
-"topicName":"shellies/shellyem3-3494546ED09F/info"
+"topicName":shellies/shellyem3-3494546ED09F/info
 
-{"msg":{
+{
 	"wifi_sta":{
 		"connected":true,
 		"ssid":"mischwerk.garden",
@@ -206,11 +206,7 @@ GET /status (mqtt anaunce request, answer)
 	"fs_size":233681,
 	"fs_free":156875,
 	"uptime":555
-	},
-"date":"26-07-2022 - 11:28:41",
-"clientID":"shellyem3-3494546ED09F",
-"topicName":"shellies/shellyem3-3494546ED09F/info"
-}
+	}
 
 
 	--------------------------------------------------------------
