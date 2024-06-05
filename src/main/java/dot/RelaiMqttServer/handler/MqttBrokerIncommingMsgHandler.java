@@ -1,6 +1,10 @@
 package dot.RelaiMqttServer.handler;
 
 import dot.RelaiMqttServer.evnt.ShellyAnalysEventPublisher;
+import dot.RelaiMqttServer.handler.deviceHandler.DeviceBasicMsgHandler;
+import dot.RelaiMqttServer.handler.deviceHandler.MsgHandler;
+import dot.RelaiMqttServer.handler.deviceHandler.Shelly4ProMsgHandler;
+import dot.RelaiMqttServer.handler.deviceHandler.ShellyEM3MsgHandler;
 import dot.RelaiMqttServer.networkProtocol.mqtt.ShellysAndChanels;
 import dot.RelaiMqttServer.networkProtocol.mqtt.incommingMsg.BrokerMsgEnity;
 import dot.RelaiMqttServer.helper.BrokerMsgEntityHelper;
@@ -74,7 +78,7 @@ public class MqttBrokerIncommingMsgHandler implements MsgHandler{
 
 
     public void sortMsgToShelly(BrokerMsgEnity brokerMsgEnity) {
-        MsgHandler msgHandler = null;
+        DeviceBasicMsgHandler msgHandler = null;
     //    log.info("id: " + brokerMsgEnity.getClientID().split("-")[0]);
        switch (BrokerMsgEntityHelper.getShellyModel(brokerMsgEnity.getClientID().split("-")[0])) {
            case "shellypro4pm" : {
