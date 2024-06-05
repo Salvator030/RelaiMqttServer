@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ShellyEM3MsgHandler implements MsgHandler {
+public class ShellyEM3MsgHandler extends DeviceBasicMsgHandler {
 
     private static Logger log = LoggerFactory
             .getLogger(new Exception().fillInStackTrace().getStackTrace()[0].getClassName());
@@ -25,20 +25,20 @@ public class ShellyEM3MsgHandler implements MsgHandler {
 
         } else if (brokerMsgEnity.getTopic().contains("relay")) {
             setRelayValue(brokerMsgEnity);
-            ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID())).getRelayList()
+            ((ShellyEM3Entity) getSHELLYS_AND_CHANELS().getDevice(brokerMsgEnity.getClientID())).getRelayList()
                     .get(Integer.parseInt(brokerMsgEnity.getTopic().split("/")[3])).setStatus(brokerMsgEnity.getMsg());
 
         } else if (brokerMsgEnity.getTopic().contains("announce")) {
             setAnnaunce(brokerMsgEnity);
         } else if (brokerMsgEnity.getTopic().contains("info")) {
-            setInfo(brokerMsgEnity, brokerMsgEnity.getMsg());
+            setInfo(brokerMsgEnity);
         }
 
     }
 
     private void setEmeterValue(BrokerMsgEnity brokerMsgEnity) {
         int emeterIndex = Integer.parseInt(brokerMsgEnity.getTopic().split("/")[3]);
-        EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID()))
+        EmeterEntity emeter = ((ShellyEM3Entity) getSHELLYS_AND_CHANELS().getDevice(brokerMsgEnity.getClientID()))
                 .getEmeterList().get(emeterIndex);
         JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
         log.info("ss" + msg);
@@ -72,32 +72,19 @@ public class ShellyEM3MsgHandler implements MsgHandler {
     }
 
     private void setRelayValue(BrokerMsgEnity brokerMsgEnity) {
-        ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID())).getRelayList()
+        ((ShellyEM3Entity) getSHELLYS_AND_CHANELS().getDevice(brokerMsgEnity.getClientID())).getRelayList()
                 .get(Integer.parseInt(brokerMsgEnity.getTopic().split("/")[3])).setStatus(brokerMsgEnity.getMsg());
 
     }
 
-    private void setAnnaunce(BrokerMsgEnity brokerMsgEnity) {
-        try{
-        log.info("an: " + brokerMsgEnity.getMsg());
-        JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
-        ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
-        shelly.setIp(msg.getString("ip"));
-        shelly.setMac(msg.getString("mac"));
-        shelly.setFw_ver(msg.getString("fw_ver"));
-        shelly.setNew_fw(msg.getBoolean("new_fw"));
-    }catch(Exception exception){
-        log.error("setAnaounce(): " + exception + "\n" + brokerMsgEnity.getMsg());
-    }
-    }
 
-    private void setInfo(BrokerMsgEnity brokerMsgEnity, String msgString) {
+     
+@Override
+    protected void setInfo(BrokerMsgEnity brokerMsgEnity) {
         try {
-            JSONObject msg = new JSONObject(msgString);
-            ShellyEM3Entity shelly = (ShellyEM3Entity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
-            log.info(msg.toString());
+            JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
+            ShellyEM3Entity shelly = (ShellyEM3Entity) getSHELLYS_AND_CHANELS().getDevice(brokerMsgEnity.getClientID());
             JSONObject wifi = msg.getJSONObject("wifi_sta");
-            log.info(wifi.toString());
             shelly.getWifi_sta().setConnected(wifi.getBoolean("connected"));
             shelly.getWifi_sta().setSsid(wifi.getString("ssid"));
             shelly.getWifi_sta().setIp(wifi.getString("ip"));
@@ -110,7 +97,7 @@ public class ShellyEM3MsgHandler implements MsgHandler {
             JSONArray emeters = msg.getJSONArray("emeters");
             int count = emeters.length();
             for (int i = 0; i < count; i++) {
-                EmeterEntity emeter = ((ShellyEM3Entity) this.SHELLYS_AND_CHANELS
+                EmeterEntity emeter = ((ShellyEM3Entity) getSHELLYS_AND_CHANELS()
                         .getDevice(brokerMsgEnity.getClientID()))
                         .getEmeterList().get(i);
 
@@ -121,13 +108,9 @@ public class ShellyEM3MsgHandler implements MsgHandler {
             shelly.setTotal_power(msg.getFloat("total_power"));
 
         } catch (Exception exception) {
-            log.error(msgString, exception);
+            log.error("setInfo(): \n" +exception+ "\n" +brokerMsgEnity.getMsg());
         }
     }
 
-    private void setShellyInfoValue(BrokerMsgEnity brokerMsgEnity, String msgString) {
-        // {"msg":"{\"wifi_sta\":{\"connected\":true,\"ssid\":\"mischwerk.garden\",\"ip\":\"192.168.101.187\",\"rssi\":-53},\"cloud\":{\"enabled\":false,\"connected\":false},\"mqtt\":{\"connected\":true},\"time\":\"12:28\",\"unixtime\":1658831321,\"serial\":8,\"has_update\":false,\"mac\":\"3494546ED09F\",\"cfg_changed_cnt\":0,\"actions_stats\":{\"skipped\":0},\"relays\":[{\"ison\":false,\"has_timer\":false,\"timer_started\":0,\"timer_duration\":0,\"timer_remaining\":0,\"overpower\":false,\"is_valid\":true,\"source\":\"http\"}],\"emeters\":[{\"power\":119.22,\"pf\":0.74,\"current\":0.69,\"voltage\":233.58,\"is_valid\":true,\"total\":867.9,\"total_returned\":3.0},{\"power\":0.00,\"pf\":0.00,\"current\":0.01,\"voltage\":0.11,\"is_valid\":true,\"total\":0.0,\"total_returned\":0.0},{\"power\":0.00,\"pf\":0.00,\"current\":0.01,\"voltage\":0.09,\"is_valid\":true,\"total\":0.0,\"total_returned\":0.0}],\"total_power\":119.22,\"fs_mounted\":true,\"update\":{\"status\":\"idle\",\"has_update\":false,\"new_version\":\"20220324-123835/v1.11.8-3EM-fix-g0014dcb\",\"old_version\":\"20220324-123835/v1.11.8-3EM-fix-g0014dcb\"},\"ram_total\":49440,\"ram_free\":30132,\"fs_size\":233681,\"fs_free\":156875,\"uptime\":555}","date":"26-07-2022
-        // -
-        // 11:28:41","clientID":"shellyem3-3494546ED09F","topicName":"shellies/shellyem3-3494546ED09F/info"}
-    }
+    
 }

@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Component
-public class Shelly4ProMsgHandler implements MsgHandler {
+public class Shelly4ProMsgHandler extends DeviceBasicMsgHandler {
 
   @Autowired
   private  ShellyAnalysEventPublisher shellyAnalysEventPublisher;
@@ -33,7 +33,7 @@ public class Shelly4ProMsgHandler implements MsgHandler {
             setShellyStatusValues(brokerMsgEnity, msg);
 
         } else if (brokerMsgEnity.getTopic().contains("announce")) {
-            setShellyAnnounceValue(brokerMsgEnity, msg);
+            setAnnaunce(brokerMsgEnity);
         }
 
         else if (brokerMsgEnity.getTopic().contains("events")) {
@@ -49,10 +49,10 @@ public class Shelly4ProMsgHandler implements MsgHandler {
     
 
     private void setShellyStatusValues(BrokerMsgEnity brokerMsgEnity, JSONObject jObject) {
-        // zuordnen der werte
-        JSONObject msg = jObject.getJSONObject("msg");
+     try{
+        JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
         int index = msg.getInt("id");
-        Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) this.SHELLYS_AND_CHANELS
+        Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) this.getSHELLYS_AND_CHANELS()
                 .getDevice(brokerMsgEnity.getClientID());
         ChanelEntity chanel = shelly.getChannels().get(index);
         chanel.setSource(msg.getString("source"));
@@ -76,27 +76,17 @@ public class Shelly4ProMsgHandler implements MsgHandler {
         chanel.setTemp_c(temp.getFloat("tC"));
         chanel.setTemp_f(temp.getFloat("tF"));
         chanel.setDateOfChange((brokerMsgEnity.getDate()));
-        SHELLYS_AND_CHANELS.setChanelOutputMap(msg.getBoolean("output"), chanel);
-
-    }
-
-    private void setShellyAnnounceValue(BrokerMsgEnity brokerMsgEnity, JSONObject msg) {
-        try{
-        ShellyEntity shelly = SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
-        shelly.setIp(msg.getString("ip"));
-        shelly.setMac(msg.getString("mac"));
-        shelly.setFw_ver(msg.getString("fw_ver"));
-        shelly.setNew_fw(msg.getBoolean("new_fw"));
+        getSHELLYS_AND_CHANELS().setChanelOutputMap(msg.getBoolean("output"), chanel);
     }catch(Exception exception){
-        log.error("setAnaounce(): " + exception + "\n" + brokerMsgEnity.getMsg());
+        log.error("setShellyStatusValues: \n"+ exception + "\n" + exception.getStackTrace()+ "\n" + brokerMsgEnity.getMsg());
     }
     }
 
-     private void setInfo(BrokerMsgEnity brokerMsgEnity) {
+    @Override
+        protected void setInfo(BrokerMsgEnity brokerMsgEnity) {
         try {
             JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
-            Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) this.SHELLYS_AND_CHANELS.getDevice(brokerMsgEnity.getClientID());
-            log.info("setInfo(): msg: " + brokerMsgEnity.getMsg());
+            Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) this.getSHELLYS_AND_CHANELS().getDevice(brokerMsgEnity.getClientID());
             JSONObject wifi = msg.getJSONObject("wifi_sta");
             log.info(wifi.toString());
             shelly.getWifi_sta().setConnected(wifi.getBoolean("connected"));
@@ -112,7 +102,7 @@ public class Shelly4ProMsgHandler implements MsgHandler {
             JSONArray chanels = msg.getJSONArray("emeters");
             int count = chanels.length();
             for (int i = 0; i < count; i++) {
-                ChanelEntity chanel = ((Shelly4ProPmEntity) this.SHELLYS_AND_CHANELS
+                ChanelEntity chanel = ((Shelly4ProPmEntity) this.getSHELLYS_AND_CHANELS()
                         .getDevice(brokerMsgEnity.getClientID()))
                         .getChannels().get(i);
 
@@ -123,7 +113,7 @@ public class Shelly4ProMsgHandler implements MsgHandler {
             shelly.setTotal_power(msg.getFloat("total_power"));
 
         } catch (Exception exception) {
-            log.error("setInfo(): parse Msg Err:\n " + brokerMsgEnity.getMsg(), exception);
+            log.error("setInfo(): \n" + exception + "\n" + brokerMsgEnity.getMsg());
         }
     }
 
@@ -146,15 +136,15 @@ public class Shelly4ProMsgHandler implements MsgHandler {
 
     }
     private void setEvent(BrokerMsgEnity brokerMsgEnity, JSONObject msg) {
-        LOGGER.info("setEventMSG " + msg.toString());
+        log.info("setEventMSG " + msg.toString());
         //get params from msg
         JSONObject params = msg.getJSONObject("params");
-        LOGGER.info("params " + params.toString());
+        log.info("params " + params.toString());
         String[] paramKeys = params.keySet().toArray(new String[0]);
         JSONObject switchI = params.getJSONObject(paramKeys[0]);
-        LOGGER.info("switchI: " + switchI.getInt("id"));
+        log.info("switchI: " + switchI.getInt("id"));
         int index = switchI.getInt("id");
-        Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) this.SHELLYS_AND_CHANELS
+        Shelly4ProPmEntity shelly = (Shelly4ProPmEntity) getSHELLYS_AND_CHANELS()
                 .getDevice(brokerMsgEnity.getClientID());
         ChanelEntity chanel = shelly.getChannels().get(index);
         String searchValue = switchI.keySet().toArray(new String[0])[0];
@@ -163,39 +153,39 @@ public class Shelly4ProMsgHandler implements MsgHandler {
             switch (searchValue) {
 
             case "source": {
-                LOGGER.info("source " );
+                log.info("source " );
                 chanel.setSource(switchI.getString("source"));
                 break;
             }
             case "output": {
                 chanel.setOutput(switchI.getBoolean("output"));
-                LOGGER.info("source " );
-                SHELLYS_AND_CHANELS.setChanelOutputMap(msg.getBoolean("output"), chanel);
+                log.info("source " );
+                getSHELLYS_AND_CHANELS().setChanelOutputMap(msg.getBoolean("output"), chanel);
                 break;
             }
             case "apower": {
                 chanel.setPower(switchI.getDouble("apower"));
-                LOGGER.info("source " );
+                log.info("source " );
                 shellyAnalysEventPublisher.publishCustomEvent(EAnalys.power);
                 break;
             }
             case "voltage": {
-                LOGGER.info("voltage" );
+                log.info("voltage" );
                 chanel.setVoltage(switchI.getDouble("voltage"));
                 break;
             }
             case "current": {
-                LOGGER.info("current " );
+                log.info("current " );
                 chanel.setCurrent(switchI.getDouble("current"));
                 break;
             }
             case "pf": {
-                LOGGER.info("pf " );
+                log.info("pf " );
                 chanel.setPf(switchI.getDouble("pf"));
                 break;
             }
             case "aenergy": {
-                LOGGER.info("aenergy " );
+                log.info("aenergy " );
                 JSONObject enegry = switchI.getJSONObject("aenergy");
                 chanel.setEnergy_total(enegry.getFloat("total"));
 
@@ -216,12 +206,12 @@ public class Shelly4ProMsgHandler implements MsgHandler {
             }
 
             default : {
-                LOGGER.info("setEvent(): Not Found << searchValue >>: "+ searchValue );
+                log.info("setEvent(): Not Found << searchValue >>: "+ searchValue );
             }
 
         }
     }catch(Exception e){
-        LOGGER.error(e.getMessage() +"\n"+ e.getStackTrace());
+        log.error(e.getMessage() +"\n"+ e.getStackTrace());
     }
         
         chanel.setDateOfChange((brokerMsgEnity.getDate()));

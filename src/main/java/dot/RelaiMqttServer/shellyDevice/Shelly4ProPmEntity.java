@@ -17,6 +17,8 @@ public class Shelly4ProPmEntity extends ShellyEntity{
     public Shelly4ProPmEntity(String clientID) {
         setModel(clientID);
         initChannels(clientID);
+        wifi_sta = new WifiEntity();
+        cloud = new CloudEntity();
    }
     
     public WifiEntity getWifi_sta() {
