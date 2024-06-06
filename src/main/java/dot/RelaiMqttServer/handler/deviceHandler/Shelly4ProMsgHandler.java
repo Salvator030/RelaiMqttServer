@@ -40,7 +40,7 @@ public class Shelly4ProMsgHandler extends DeviceBasicMsgHandler {
         else if (brokerMsgEnity.getTopic().contains("info")) {
             setInfo(brokerMsgEnity);
         }
-        else { log.toppicError("handelMsg()", brokerMsgEnity);}
+        else { log.toppicError(this.getClass().getName(), "handelMsg", brokerMsgEnity);}
 
     }
 
@@ -192,7 +192,7 @@ public class Shelly4ProMsgHandler extends DeviceBasicMsgHandler {
             }
 
             default : {
-               log.jsonKeyError("setEvent", searchValue);
+               log.jsonKeyError(this.getClass().getName(), "setEvent", searchValue);
             }
 
         }
