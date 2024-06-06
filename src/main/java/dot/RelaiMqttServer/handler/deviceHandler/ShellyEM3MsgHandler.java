@@ -6,16 +6,14 @@ import dot.RelaiMqttServer.shellyDevice.ShellyEM3Entity;
 import dot.RelaiMqttServer.shellyDevice.ShellyEntity;
 import dot.RelaiMqttServer.shellyDevice.WifiEntity;
 import netscape.javascript.JSObject;
-
+import dot.RelaiMqttServer.helper.MyLogger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 public class ShellyEM3MsgHandler extends DeviceBasicMsgHandler {
 
-    private static Logger log = LoggerFactory
-            .getLogger(new Exception().fillInStackTrace().getStackTrace()[0].getClassName());
+    private static MyLogger  log = new MyLogger();
 
     @Override
     public void handelMsg(BrokerMsgEnity brokerMsgEnity) {
@@ -41,7 +39,6 @@ public class ShellyEM3MsgHandler extends DeviceBasicMsgHandler {
         EmeterEntity emeter = ((ShellyEM3Entity) getSHELLYS_AND_CHANELS().getDevice(brokerMsgEnity.getClientID()))
                 .getEmeterList().get(emeterIndex);
         JSONObject msg = new JSONObject(brokerMsgEnity.getMsg());
-        log.info("ss" + msg);
         if (brokerMsgEnity.getTopic().contains("total_returned")) {
             emeter.setTotal_returned(Float.parseFloat(msg.getString("msg")));
         } else if (brokerMsgEnity.getTopic().contains("total")) {
@@ -57,8 +54,7 @@ public class ShellyEM3MsgHandler extends DeviceBasicMsgHandler {
         } else if (brokerMsgEnity.getTopic().contains("energy")) {
             emeter.setEnergy(Float.parseFloat(msg.getString("msg")));
         } else {
-            log.error("setEmeterValue(): topic unkown: " + brokerMsgEnity.getTopic());
-        }
+            log.toppicError(this.getClass().getName() ,"setEmeterValue", brokerMsgEnity);}
     }
 
     private void setEmeter(EmeterEntity emeter, JSONObject emeterJsonObject) {
@@ -108,7 +104,7 @@ public class ShellyEM3MsgHandler extends DeviceBasicMsgHandler {
             shelly.setTotal_power(msg.getFloat("total_power"));
 
         } catch (Exception exception) {
-            log.error("setInfo(): \n" +exception+ "\n" +brokerMsgEnity.getMsg());
+            log.logException(this.getClass().getName() ,"setInfo", exception, brokerMsgEnity);
         }
     }
 
