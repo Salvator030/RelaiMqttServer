@@ -31,7 +31,7 @@ public abstract class DeviceBasicMsgHandler {
         shelly.setFw_ver(msg.getString("fw_ver"));
         shelly.setNew_fw(msg.getBoolean("new_fw"));
     }catch(Exception exception){
-         log.logException("setAnaounce():" ,exception, brokerMsgEnity );
+         log.logException(this.getClass().getName() ,"setAnaounce():" ,exception, brokerMsgEnity );
     }
     
 

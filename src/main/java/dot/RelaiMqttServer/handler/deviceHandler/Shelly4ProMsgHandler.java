@@ -76,7 +76,7 @@ public class Shelly4ProMsgHandler extends DeviceBasicMsgHandler {
         chanel.setDateOfChange((brokerMsgEnity.getDate()));
         getSHELLYS_AND_CHANELS().setChanelOutputMap(msg.getBoolean("output"), chanel);
     }catch(Exception exception){
-        log.logException("setShellyStatusValues", exception,  brokerMsgEnity);
+        log.logException(this.getClass().getName() ,"setShellyStatusValues", exception,  brokerMsgEnity);
     }
     }
 
@@ -110,7 +110,7 @@ public class Shelly4ProMsgHandler extends DeviceBasicMsgHandler {
             shelly.setTotal_power(msg.getFloat("total_power"));
 
         } catch (Exception exception) {
-            log.logException("setInfo", exception,  brokerMsgEnity);
+            log.logException(this.getClass().getName() ,"setInfo", exception,  brokerMsgEnity);
         }
     }
 
@@ -197,7 +197,7 @@ public class Shelly4ProMsgHandler extends DeviceBasicMsgHandler {
 
         }
     }catch(Exception exception){
-        log.logException("setEvent", exception,  brokerMsgEnity);
+        log.logException(this.getClass().getName() ,"setEvent", exception,  brokerMsgEnity);
     }
         
         chanel.setDateOfChange((brokerMsgEnity.getDate()));
