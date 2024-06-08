@@ -20,15 +20,22 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import dot.RelaiMqttServer.networkProtocol.mqtt.broker.Broker;
 
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"dot.RelaiMqttServer.mqtt.broker", "dot.RelaiMqttServer.evnt", "dot.RelaiMqttServer.handler"})
 
-public class BackendConfig {
+public class BackendConfig implements WebMvcConfigurer {
 
-
+  @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedOriginPatterns("*");
+    }
     //MQTT
     @Bean
     public Server server() { return  new Server();}
