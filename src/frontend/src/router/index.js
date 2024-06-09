@@ -1,31 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Broker from '../components/ServerControlView.vue'
-
-const routes = [
-  {
-    path: '/',
-    name: 'broker',
-    component: Broker,
-  },
-
-  {
-    path: '/msg',
-    name: 'msg',
-    component: () => import(/* webpackChunkName: "about" */ '../components/MsgView.vue')
-  },
-
-  {
-      path: '/shellys',
-      name: 'shellys',
-      component: () => import(/* webpackChunkName: "about" */ '../components/ShellyView.vue')
-    }
-
-
-]
+import HomeView from '../views/HomeView.vue'
+import AppLayout from '@/layout/AppLayout.vue'
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      component: AppLayout,
+      children: [
+        {
+          path: '/',
+          name: 'home',
+          component: HomeView
+        }
+      ]
+    }
+  ]
 })
 
 export default router

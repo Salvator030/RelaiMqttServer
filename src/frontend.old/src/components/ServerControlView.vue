@@ -32,7 +32,6 @@ export default {
 
        return {
        msg:'Server is Stopped',
-         err: '',
          startBtnTerms: false,
          stopBtnTerms: true,
          qos: 2,
