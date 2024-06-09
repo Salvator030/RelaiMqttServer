@@ -54,6 +54,7 @@ public class  Broker{
         }
 
         public boolean isRun(){
+                log.info("Request BROKER IS RUNNING");
                 return this.isRun;
         }
 
