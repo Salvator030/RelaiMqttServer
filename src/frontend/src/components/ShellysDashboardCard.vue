@@ -1,7 +1,10 @@
 <script setup>
 import Card from 'primevue/card';
-
-const props = defineProps({shellysList: []});
+import { useBroker } from '@/stores/broker';
+import { storeToRefs } from 'pinia'
+const broker = useBroker();
+const { shellysList} = storeToRefs(broker);
+console.log(shellysList)
 </script>
 
 <template>
@@ -10,8 +13,8 @@ const props = defineProps({shellysList: []});
         <h1>Shellys</h1>
       </template>
       <template #content>
-        <div v-for="(item) in props.shellysList" :key="item.id">
-            <p>abc</p>
+        <div v-for="(item) in shellysList" :key="item.id">
+            <p>{{item.id}}</p>
         </div>
       </template>
     </Card>
