@@ -67,7 +67,7 @@ export const useBroker = defineStore('broker', () => {
 
         Object.keys(shellysList.value).forEach((key) => {
           shellysList.value[key].model = key
-          console.log(shellysList.value[key])
+      //    console.log(shellysList.value[key])
         })
       })
   }
@@ -76,7 +76,7 @@ export const useBroker = defineStore('broker', () => {
     setInterval(async () => {
       if (isServerRunnig.value) {
         await getShellysFromBroker() ;
-           console.log(shellysList.value)
+      //     console.log(shellysList.value)
       }
   
     })
