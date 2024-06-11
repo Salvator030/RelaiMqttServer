@@ -1,24 +1,26 @@
 <script setup>
-import Card from 'primevue/card';
-import { useBroker } from '@/stores/broker';
-import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
-const broker = useBroker();
-const { shellysList } = storeToRefs(broker);
-const shellys = ref([]);
-setInterval(() => { shellys.value = shellysList; console.log(shellys.value.) },10000)
-
+  import Card from 'primevue/card';
+  import { useBroker } from '@/stores/broker';
+  import { storeToRefs } from 'pinia'
+  const broker = useBroker();
+  const { shellysList } = storeToRefs(broker);
 </script>
 
 <template>
-  <Card>
-    <template #title>
-      <h1>Shellys</h1>
+  <Card style="margin: 4px; ">
+    <template #title >
+      <h1 >Shellys</h1>
     </template>
     <template #content>
-      <div v-for="(item) in shellys.value" :key="item.id">
-        <p>{{ item.id }}</p>
-      </div>
+
+      <Card v-for="(item) in shellysList" :key="item.model" style="margin: 4px; width: 24rem;" >
+        <template #title>
+      <h4>{{ item.model  }}</h4>
+    </template>
+    <template #content>
+      <p>total power: {{ item.total_power }}</p>
+    </template>
+      </Card>
     </template>
   </Card>
 </template>
