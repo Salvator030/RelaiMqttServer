@@ -10,9 +10,9 @@ const probs = defineProps({
 const getColor = (deviceName) => {
 console.log("dm "+deviceName)
      if (deviceName.includes("pro4pm")){
-return "bg-" + colorNameArray[1] +"-500"
+return "bg-" + colorNameArray[1] +"-300"
     }else if (deviceName.includes("em3")){
-        return colorNameArray[2] +"-500"
+        return "bg-" +colorNameArray[2] +"-300"
     }
 } 
 
