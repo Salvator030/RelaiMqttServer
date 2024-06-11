@@ -1,24 +1,30 @@
 <script setup>
   import Card from 'primevue/card';
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
 const probs = defineProps({
    device: {},
 })
-const color = ref("bg-pink-300");
+
+ const colorNameArray = ['primary','blue','green','yellow','cyan','pink','indigo','teal','orange','bluegray','purple','red','gray'];
+  
 const getColor = (deviceName) => {
-    const colorNameArray = ['primary','blue','green','yellow','cyan','pink','indigo','teal','orange','bluegray','purple','red','gray'];
-    if (deviceName.includes("pro4pm")){
-return colorNameArray[1] +"-500"
+console.log("dm "+deviceName)
+     if (deviceName.includes("pro4pm")){
+return "bg-" + colorNameArray[1] +"-500"
     }else if (deviceName.includes("em3")){
         return colorNameArray[2] +"-500"
     }
 } 
+
+const base = ref('text-900 font-medium border-round')
+const color = computed( ()=>{return getColor(probs.device.model)
+    } );
 </script>
 
 <template>  
        <Card  style="margin: 4px; width: 25rem;"  >
         <template #title>
-      <span  class="text-900 font-medium color border-round">{{ device.model}}</span>
+      <span  :class="[base,color]">{{ device.model}}</span>
     </template>
     <template #content>
       <span class="mt-1 text-600">total power: {{ device.total_power }}</span>
