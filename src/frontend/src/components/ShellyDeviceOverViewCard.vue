@@ -8,7 +8,6 @@ const probs = defineProps({
  const colorNameArray = ['primary','blue','green','yellow','cyan','pink','indigo','teal','orange','bluegray','purple','red','gray'];
   
 const getColor = (deviceName) => {
-console.log("dm "+deviceName)
      if (deviceName.includes("pro4pm")){
 return "bg-" + colorNameArray[1] +"-300"
     }else if (deviceName.includes("em3")){
