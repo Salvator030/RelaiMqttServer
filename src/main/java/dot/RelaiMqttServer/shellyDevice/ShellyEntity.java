@@ -8,22 +8,24 @@ public abstract class ShellyEntity {
 
 
     @Column
-    private String model;
+    protected String model;
     @Column
-    private String clientID;
+    protected String clientID;
 
     @Column
-    private String ip ;
+    protected String ip ;
     @Column
-    private String mac;
+    protected String mac;
     @Column
-    private boolean new_fw;
+    protected boolean new_fw;
     @Column
-    private String fw_ver;
+    protected String fw_ver;
 
     public ShellyEntity() {
-
-
+        this.ip = "000.000.000.000";
+        this.mac = "ABCDEFGH";
+        this.new_fw = false;
+        this.fw_ver = "0";
     }
 
     public String getModel() {
