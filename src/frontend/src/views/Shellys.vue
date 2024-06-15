@@ -1,17 +1,15 @@
 <script setup>
-  import Card from 'primevue/card';
-  import { useBroker } from '@/stores/broker';
-  import { storeToRefs } from 'pinia'
-  const broker = useBroker();
-  const { shellysList } = storeToRefs(broker);
+import ShellyDetailCard from '@/components/icons/ShellyDeatailCard/ShellyDetailCard.vue';
+import { useBroker } from '@/stores/broker';
+import { storeToRefs } from 'pinia'
+const broker = useBroker();
+const { shellysList } = storeToRefs(broker);
 
-
+console.log(shellysList)
 </script>
 
 <template>
-    <Card  v-for="(item) in shellysList" :key="item.model" :device="item" >
-
-        <template #title><h3>{{item.model}}</h3></template>
-        <template #content></template>
-    </Card>	
+  <div style="display: flex;  flex-wrap: wrap ; justify-content: flex-start;" >
+    <ShellyDetailCard v-for="(item) in shellysList" :key="item.model" :device="item" />
+  </div>
 </template>
