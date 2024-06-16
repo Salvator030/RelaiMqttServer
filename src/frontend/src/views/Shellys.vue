@@ -9,7 +9,7 @@ console.log(shellysList)
 </script>
 
 <template>
-  <div style="display: flex;  flex-wrap: wrap ; justify-content: flex-start;" >
+  <div style="display: flex;  flex-wrap: wrap ; justify-items: flex-start;" >
     <ShellyDetailCard v-for="(item) in shellysList" :key="item.model" :device="item" />
   </div>
 </template>
