@@ -12,6 +12,7 @@ export const useBroker = defineStore('broker', () => {
   const isServerRunnig = ref(false)
   const isServerLoading = ref(false)
   const shellysList = ref(null)
+  const mqttMsgs = ref(null)
 
   const startServer = async () => {
     isServerLoading.value = true
@@ -72,18 +73,28 @@ export const useBroker = defineStore('broker', () => {
       })
   }
 
-  const fetchShellys = () => {
+  const getMsgs= async () => {await fetch(`${Env.API_BASE_URL}/broker/msgs`)
+  .then((response) => response.text())
+  .then((data) => {
+    mqttMsgs.value = JSON.parse(data);
+})};
+
+  const fetchData =  () => {
     setInterval(async () => {
       if (isServerRunnig.value) {
         await getShellysFromBroker() ;
-      //     console.log(shellysList.value)
+      await getMsgs();
       }
   
-    })
+    },5000)
   }
 
-  isServerRun()
-  fetchShellys()
 
-  return { serverMsg, isServerRunnig, isServerLoading, shellysList, startServer, stopServer }
+
+
+
+  isServerRun()
+  fetchData()
+
+  return { serverMsg, isServerRunnig, isServerLoading, shellysList,mqttMsgs,  startServer, stopServer }
 })

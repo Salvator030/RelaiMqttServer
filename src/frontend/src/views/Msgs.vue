@@ -15,11 +15,10 @@ console.log(mqttMsgs)
 const mqttMsgsArray = ref([]);
 const count = ref(0);
 
-const labelStyle = ['font-medium','text-3xl'];
+const labelStyle = ['font-bold','text-3xl'];
+const textStyle = ['font-medium','text-lg'];
 
-        setInterval(()=> { mqttMsgsArray.value = mqttMsgs._rawValue;
-},3000)
-    
+   
 // const page = computed(() => {return mqttMsgsArray.value.slice(count.value * 10 ,((count.value+1) * 10) )})
   
    
@@ -29,7 +28,9 @@ const labelStyle = ['font-medium','text-3xl'];
 </script>
 
 <template>
-<span :class="labelStyle">Massages</span>
+    <div><div :class="labelStyle">Massages</div>
+<span :class="textStyle">last 100 msgs</span></div>
+
 
 <DataTable :value="mqttMsgs"  paginator :rows="5" :rowsPerPageOptions="[5, 10, 20, 50]" stripedRows tableStyle="min-width: 50rem">
     <Column field="date" header="Date"></Column>

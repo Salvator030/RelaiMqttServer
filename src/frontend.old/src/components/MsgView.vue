@@ -49,7 +49,6 @@ export default {
 
                });
 
-
         await this.Sleep(10000)
         }while(t);
      },
