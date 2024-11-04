@@ -1,3 +1,5 @@
+# The project has been cancelled
+
 # RelaiMqttServer 
 
 This application is intended for the automated control of Shelly relays.
